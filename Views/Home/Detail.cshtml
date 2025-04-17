@@ -1,0 +1,77 @@
+﻿<div class="read-content">
+    <div class="media pt-5">
+        <img class="mr-3 rounded-circle bg-black" src="~/images/avatar/7.png">
+        <div class="media-body">
+            <h5 class="m-b-3">@ViewBag.Mail.em_from</h5>
+            <p class="m-b-2">@ViewBag.Mail.em_date.ToString("dd MMM yyyy")</p>
+        </div>
+    </div>
+    <hr>
+    <iframe srcdoc="@ViewBag.Mail.em_body" width="100%" height="300px"></iframe>
+    <hr>
+    <div class="respond-section d-none">
+        <div class="row mb-1">
+            <label for="inputEmail" class="col-sm-1 col-form-label">To</label>
+            <div class="col-sm-11">
+                <input type="email" class="form-control fnt-13" id="inputEmail" value="@ViewBag.Mail.em_from" readonly>
+            </div>
+        </div>
+        <div class="quill-editor-default"></div>
+        <div class="row mt-1">
+            <div class="col-md-12 text-right">
+                <button type="button" class="btn btn-primaryw-md fnt-13 btn-sendmail" data-idx="@ViewBag.Mail.em_idx">Send</button>
+                <button type="button" class="btn btn-primaryw-md fnt-13 btn-respond-trash"><i class="icon-trash"></i></button>
+            </div>
+        </div>
+    </div>
+    <div style="padding-bottom: 20px; margin-bottom: 40px;">
+        <div class="pull-left">
+            <button class="btn btn-primaryw-md m-b-30 btn-prev-go" type="button"><i class="mdi mdi-arrow-left"></i></button>
+        </div>
+        <div class="pull-right">
+            <button class="btn btn-primaryw-md m-b-30 btn-respond" type="button" data-idx="@ViewBag.Mail.em_idx">Process</button>
+            <button class="btn btn-primaryw-md m-b-30 btn-response" type="button" data-idx="@ViewBag.Mail.em_idx">Response</button>
+        </div>
+    </div>
+    <div class="card order-info" style="display:block">
+       @* <div class="card-body d-none">
+            <div class="card-body">
+                <div class="card-title">
+                    <h4></h4>
+                </div>
+                <div class="table-responsive">
+                    <table class="table order-table">
+                        <thead>
+                            <tr>
+                                <th>Order</th>
+                                <th>Date</th>
+                                <th>Customer</th>
+                                <th>Channel</th>
+                                <th>Total</th>
+                                <th>Payment status</th>
+                                <th>Fulfillment status</th>
+                                <th>Items</th>
+                                <th>Tags</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-right m-t-15 btn-order" data-idx="0" data-emidx="0">
+                    <button class="btn btn-warning m-b-30 m-t-15 f-s-14 p-l-20 p-r-20 m-r-10 btn-cancel" type="button">Cancel</button>
+                    <button class="btn btn-dark m-b-30 m-t-15 f-s-14 p-l-20 p-r-20 btn-refund" type="button" btn-refund>Refund</button>
+                    <button class="btn btn-dark m-b-30 m-t-15 f-s-14 p-l-20 p-r-20 d-none" type="button">Partial Refund</button>
+                    <button class="btn btn-dark m-b-30 m-t-15 f-s-14 p-l-20 p-r-20 d-none" type="button">Send Tracking</button>
+                </div>
+            </div>
+        </div>*@
+        <div class="mobile-card-body d-none">
+            <div class="card-box">       
+                <div class="order-info" id="order_info">                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="em_idx" value="@ViewBag.Mail.em_idx" />

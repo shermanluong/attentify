@@ -1,0 +1,36 @@
+﻿@{
+    if (ViewBag.smsHistory.Count != 0)
+	{            
+        @foreach(var item in ViewBag.smsHistory) {
+
+            <li class="chat-message @(item.sm_to == ViewBag.strMyPhone ?  "" : "chat-message-right")" style="margin-bottom: 1rem !important;">
+                <div class="d-flex overflow-hidden">
+                    @if ( item.sm_to == ViewBag.strMyPhone )
+                    {
+                        <div class="chat-message-wrapper flex-grow-1">
+                            <div class="chat-message-text">
+                                <p class="mb-0">@item.sm_body</p>
+                            </div>
+                            <div class="text-muted mt-1 ms-1">
+                                <i class="ti ti-checks ti-16px text-success me -1"></i>
+                                <small>@item.sm_date</small>
+                            </div>
+                        </div>
+                    } else
+                    {
+                        <div class="chat-message-wrapper flex-grow-1">
+                            <div class="chat-message-text">
+                                <p class="mb-0">@item.sm_body</p>
+                            </div>
+                            <div class="text-end text-muted mt-1 me-1">
+                                <i class="ti ti-checks ti-16px text-success me-1"></i>
+                                <small>@item.sm_date</small>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </li>
+
+        }
+	}
+}

@@ -1,0 +1,73 @@
+﻿@{
+    Layout = "_Layout";
+    ViewBag.title = "Dashboard";
+}
+
+@try{
+    <div class="container-p-y container-fluid">
+        <div class="card">
+            <h5 class="card-header">Account Info</h5>
+            <div class="card-body justify-content">
+                <div disabled>
+                    <div class="col-4 mb-4">
+                        <label for="defaultFormControlInput" class="form-label">Account Sid</label>
+                        <input type="text" class="form-control col-4" id="accountsid" placeholder="" aria-describedby="defaultFormControlHelp" value = "@ViewBag.twilioAccount.accountsid" disabled>
+                    </div>
+                    <div class="col-4 mb-4">
+                        <label for="defaultFormControlInput" class="form-label">Auth Token</label>
+                        <input type="text" class="form-control col-4" id="authtoken" placeholder="" aria-describedby="defaultFormControlHelp" value = "@ViewBag.twilioAccount.authtoken" disabled>
+                        <div id="defaultFormControlHelp" class="form-text">
+                            Always store your token securely to protect your account.
+                        </div>
+                    </div>
+                    <div class="col-4 mb-4">
+                        <label for="defaultFormControlInput" class="form-label">My Twilio Phone Number</label>
+                        <input type="text" class="form-control col-4" id="phonenumber" placeholder="" aria-describedby="defaultFormControlHelp" value = "@ViewBag.twilioAccount.phonenumber" disabled>
+                    </div>
+                </div>
+                <div id="editDiv" class="demo-inline-spacing">
+                    <button id = "editButton" type="button" class="btn btn-primary waves-effect waves-light">Edit</button>
+                </div>
+                <div id="saveDiv" class="demo-inline-spacing" style="display: none;">
+                    <button id="saveButton" type="button" class="btn btn-primary waves-effect waves-light">Save</button>
+                    <button id="cancelButton" type="button" class="btn btn-secondary waves-effect waves-light">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}catch(Exception ex){
+    Console.WriteLine("dashbaord" + ex.Message);
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#editButton").on("click", (e) => {
+            $("#saveDiv").show();
+            $("#editDiv").hide();
+            $("input").prop("disabled", false);
+        });
+
+        $("#cancelButton").on("click", (e) => {
+            $("#saveDiv").hide();
+            $("#editDiv").show();
+            $("input").prop("disabled", true);
+
+        });
+
+        $("#saveButton").on("click", (e) => {
+            const accountsid = $("#accountsid").val();
+            const authtoken = $("#authtoken").val();
+            const phonenumber = $("#phonenumber").val();
+
+            $.post('/setting/savetwilio', { accountsid: accountsid, authtoken: authtoken, phonenumber: phonenumber }, (res) => {
+                if (res.status == 201) {
+                    $("#saveDiv").hide();
+                    $("#editDiv").show();
+                    $("input").prop("disabled", true);
+                } else {
+                    console.log(res.message);
+                }
+            }, 'json')
+        });
+    });
+</script>

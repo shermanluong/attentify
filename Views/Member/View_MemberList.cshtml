@@ -1,0 +1,55 @@
+﻿@{
+   
+}
+
+<div class="table-responsive text-nowrap">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.memberList)
+            {
+                <tr>
+                    <td>
+                        <span class="fw-medium">@item?.email</span>
+                    </td>
+                    @{
+                        switch (item?.role)
+                        {
+                            case 0:
+                                <td>owner</td>
+                                break;
+                            case 1:
+                                <td>admin</td>
+                                break;
+                            case 2:
+                                <td>operator</td>
+                                break;
+                            default:
+                                <td>view</td>
+                                break;
+                        }
+                    }
+                     
+                    <td>
+                        <div class="dropdown">
+                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                <i class="ti ti-dots-vertical"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item waves-effect" href="javascript:void(0);" onclick="OnDeleteMember(@item?.id);"><i class="ti ti-trash me-1"></i> Delete</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+	
+

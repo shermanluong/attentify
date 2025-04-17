@@ -1,0 +1,143 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="~/img/logo.png">
+    <link rel="stylesheet" href="~/css/761d574e9eab5955.css">
+    <title>Attentify Login</title>
+    <script src="~/assets/js/jquery-1.9.1.min.js"></script>
+    <script src="~/assets/js/jquery-ui-1.9.1.min.js"></script>
+</head>
+<body class="overflow-hidden">
+    <div id="__next" data-reactroot="">
+        <div class="absolute w-full h-full overflow-hidden pt-safe">
+            <div class="flex flex-col items-center px-4 py-10 md:py-20 h-full overflow-y-auto">
+                <div class="flex flex-col m-auto w-full max-w-[392px] pb-10">
+                    <div class="text-center pb-6 select-none">
+                        <span style="box-sizing: border-box; display: inline-block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;">
+                            <span style="box-sizing: border-box; display: block; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;">
+                                <img alt="" aria-hidden="true"
+                                     src="~/img/logo.png"
+                                     style="display: block; max-width: 100%; width: 75px; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;">
+                            </span>
+                            @*<img alt="logo" src="~/img/icon.svg" decoding="async" data-nimg="intrinsic" srcset="~/img/icon.svg 1x, ~/img/icon.svg 2x"
+                                        style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">*@
+                        </span>
+                        <div class="text-xl font-bold">Log in to Attentify</div>
+                    </div>
+                    <div class="flex flex-col gap-4 p-4 w-full transition-all bg-white border border-Structure-Light rounded-lg shadow-low select-none">
+                        <form action="/Account/GoogleLogin" method="post">
+                            <div class="mt-2 google-wrapper">                            
+                                <button class="font-bold transition-all select-none border-gray-300 border text-Ink-Dark px-4 py-2 rounded-lg text-base focus-within:border-Action-Primary hover:bg-Action-Secondary-Alt-Dark focus-within:z-10 focus-within:ring-1 focus-within:ring-Action-Primary w-full mt-4 google-button"
+                                        type="submit" style="margin-top: 0px;">
+                                    <div class="google-mark">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="LgbsSe-Bz112c">
+                                            <g>
+                                                <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
+                                                <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
+                                                <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
+                                                <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
+                                                <path fill="none" d="M0 0h48v48H0z"></path>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <span>Sign in with Google</span>
+                                </button>                           
+                            </div>
+                        </form>
+                        <div class="flex flex-row items-center">
+                            <hr class="flex-grow border-shades-100"><span class="text-base font-bold leading-tight ml-8 mr-8">or</span>
+                            <hr class="flex-grow border-shades-100">
+                        </div>
+                        <form id = "loginForm">
+                            <div class="text-sm font-bold mb-0.5 ml-1">Email</div>
+                            <div class="w-full focus-within:border-Action-Primary focus-within:ring-Action-Primary relative select-none rounded-md border border-gray-300 px-3 py-2 bg-white focus-within:border-Action-Primary focus-within:z-10 focus-within:ring-1 focus-within:ring-Action-Primary">
+                                <div class="flex items-center space-x-2 text-Ink-Mid text-sm w-full">
+                                    <input type="text"
+                                           id="email"
+                                           class="block w-full border-0 bg-transparent p-0 focus:ring-0 text-sm placeholder:text-Ink-Mid disabled:text-Ink-Mid text-Ink-Dark"
+                                           placeholder="Enter your email address" autocorrect="off" autocomplete="email"
+                                           autocapitalize="none" spellcheck="false" value="" required>
+                                </div>
+                            </div>
+                            <div class="text-sm font-bold mt-2 mb-0.5 ml-1">Password</div>
+                            <div class="w-full focus-within:border-Action-Primary focus-within:ring-Action-Primary relative select-none rounded-md border border-gray-300 px-3 py-2 bg-white focus-within:border-Action-Primary focus-within:z-10 focus-within:ring-1 focus-within:ring-Action-Primary">
+                                <div class="flex items-center space-x-2 text-Ink-Mid text-sm w-full">
+                                    <input type="password"
+                                           id="password"
+                                           class="block w-full border-0 bg-transparent p-0 focus:ring-0 text-sm placeholder:text-Ink-Mid disabled:text-Ink-Mid text-Ink-Dark"
+                                           autocomplete="current-password" placeholder="Enter your password">
+                                    <div class="cursor-pointer" tabindex="0" role="button">
+                                        <svg width="1.5em" height="1.5em"
+                                             viewBox="0 0 24 24" stroke-width="1.5" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg" color="currentColor"
+                                             class="text-Ink-Light w-[20px] h-[20px] mt-[2px]">
+                                            <path d="M19.5 16L17.0248 12.6038" stroke="currentColor" stroke-linecap="round"
+                                                  stroke-linejoin="round"></path>
+                                            <path d="M12 17.5V14" stroke="currentColor" stroke-linecap="round"
+                                                  stroke-linejoin="round"></path>
+                                            <path d="M4.5 16L6.96895 12.6124" stroke="currentColor" stroke-linecap="round"
+                                                  stroke-linejoin="round"></path>
+                                            <path d="M3 8C6.6 16 17.4 16 21 8" stroke="currentColor" stroke-linecap="round"
+                                                  stroke-linejoin="round"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-xs font-bold my-1 text-Action-Primary cursor-pointer text-right">
+                                Forgot
+                                Password
+                            </div>
+                            <button class="font-bold transition-all select-none bg-Action-Primary-Alt text-Ink-Dark px-4 py-2 rounded-lg text-base hover:bg-Action-Primary-Alt-Dark w-full mt-4"
+                                          type="submit">
+                                Log In
+                            </button>
+                        </form>
+                        <div id="error-message" class="text-danger mt-3" style="display:none;">Invalid username or password.</div>
+                        <div class="text-sm font-bold text-center">
+                            Don't have an account? <span class="text-Action-Primary cursor-pointer" href="/signup">Sign up here.</span>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>       
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+    });
+
+    $("#loginForm").on("submit", function (event) {
+        event.preventDefault();
+
+        var username = $("#email").val();
+        var password = $("#password").val();
+
+        $.ajax({
+            url: '/Account/Login',
+            type: 'POST',
+            data: { strUsername: username, strPassword: password },
+            dataType: 'json', // Expecting JSON response
+            success: function (response) {
+                console.log(response);
+                if (response.status == 201) {
+                    console.log("ok");
+                    window.location.href = response.redirectUrl; // Redirect to home if successful
+                } else {
+                    $("#error-message").text("Invalid username or password.").show(); // Show error message
+                } 
+            },
+            error: function (xhr, status, error) {
+                console.error("Login failed: ", error); // Log the error to the console
+                $("#error-message").text("An error occurred. Please try again later.").show(); // Show generic error
+            }
+        });
+    });
+</script>

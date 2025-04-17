@@ -1,0 +1,15 @@
+﻿<div class="row pt-2">
+	<div class="col-7">
+		<div class="text-left">@((ViewBag.PageNo - 1) * ViewBag.PagePerCnt + 1) - @(ViewBag.PageNo * ViewBag.PagePerCnt > ViewBag.AllCnt ? ViewBag.AllCnt : ViewBag.PageNo * ViewBag.PagePerCnt) of @ViewBag.AllCnt</div>
+	</div>
+	<div class="col-5">
+		<div class="btn-group float-right">
+			<button class="btn btn-prev @(ViewBag.PageNo == 1 ? "btn-gradient" : "btn-dark")" @(ViewBag.PageNo == 1 ? "disabled" : "") type="button">
+				<i class="fa fa-angle-left"></i>
+			</button>
+			<button class="btn btn-next @(ViewBag.PageNo == ViewBag.PageCnt ? "btn-gradient" : "btn-dark")" type="button" @(ViewBag.PageNo == ViewBag.PageCnt ? "disabled" : "")>
+				<i class="fa fa-angle-right"></i>
+			</button>
+		</div>
+	</div>
+</div>

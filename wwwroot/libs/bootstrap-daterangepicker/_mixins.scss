@@ -1,0 +1,81 @@
+@import '~/scss/_bootstrap-extended/functions';
+
+@mixin bs-daterangepicker-theme($background, $color: null) {
+  $color: if($color, $color, color-contrast($background));
+
+  $highlighted-bg: rgba-to-hex(rgba($background, 0.16), $card-bg);
+  $highlighted-color: $background;
+
+  .daterangepicker td.active:not(.off) {
+    background: $background !important;
+    color: $white;
+    box-shadow: 0 0.125rem 0.375rem 0 rgba($background, 0.3);
+  }
+
+  .daterangepicker {
+    .start-date:not(.end-date):not(.off),
+    .end-date:not(.start-date):not(.off) {
+      background-color: $background;
+      color: $white;
+      border: 0 !important;
+
+      &:hover {
+        background-color: $background !important;
+      }
+    }
+  }
+
+  .daterangepicker .input-mini.active {
+    border-color: $background !important;
+  }
+
+  .daterangepicker td.in-range:not(.start-date):not(.end-date):not(.off) {
+    color: $highlighted-color !important;
+    background-color: $highlighted-bg !important;
+  }
+
+  .ranges li.active {
+    color: $highlighted-color !important;
+    background-color: $highlighted-bg !important;
+  }
+}
+
+@mixin bs-daterangepicker-dark-theme($background, $color: null) {
+  $color: if($color, $color, color-contrast($background));
+
+  $highlighted-bg: rgba-to-hex(rgba($background, 0.16), $card-bg);
+  $highlighted-color: $background;
+
+  .daterangepicker td.active:not(.off) {
+    background: $background !important;
+    color: $white;
+    box-shadow: 0 0.125rem 0.375rem 0 rgba($background, 0.3);
+  }
+
+  .daterangepicker {
+    .start-date:not(.end-date):not(.off),
+    .end-date:not(.start-date):not(.off) {
+      background-color: $background;
+      color: $white;
+      border: 0 !important;
+
+      &:hover {
+        background-color: $background !important;
+      }
+    }
+  }
+
+  .daterangepicker .input-mini.active {
+    border-color: $background !important;
+  }
+
+  .daterangepicker td.in-range:not(.start-date):not(.end-date):not(.off) {
+    color: $highlighted-color !important;
+    background-color: $highlighted-bg !important;
+  }
+
+  .ranges li.active {
+    color: $highlighted-color !important;
+    background-color: $highlighted-bg !important;
+  }
+}

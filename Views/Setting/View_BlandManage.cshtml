@@ -1,0 +1,67 @@
+﻿@{
+    Layout = "_Layout";
+    ViewBag.title = "Dashboard";
+}
+
+@try{
+    <div class="container-p-y container-fluid">
+        <div class="card">
+            <h5 class="card-header">Bland Configure</h5>
+            <div class="card-body justify-content">
+                <div disabled>
+                    <div class="col-4 mb-4">
+                        <label for="defaultFormControlInput" class="form-label">Prompt</label>
+                        <input type="text" class="form-control col-4" id="prompt" placeholder="" aria-describedby="defaultFormControlHelp" value = "" >
+                    </div>
+                </div>
+                <div id="saveDiv" class="demo-inline-spacing">
+                    <button id="saveButton" type="button" class="btn btn-primary waves-effect waves-light">Save</button>
+                    <button id="deleteButton" type="button" class="btn btn-primary waves-effect waves-light">Delete</button>
+                    <button id="insertButton" type="button" class="btn btn-primary waves-effect waves-light">Insert</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}catch(Exception ex){
+    Console.WriteLine("dashbaord" + ex.Message);
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#saveButton").on("click", (e) => {
+            const prompt = $("#prompt").val();
+
+            $.post('/configurebland', { prompt : prompt}, (res) => {
+                if (res.status == 201) {
+                    console.log(res.message);
+                } else {
+                    console.log(res.message);
+                }
+            }, 'json')
+        });
+
+        $("#deleteButton").on("click", (e) => {
+            const prompt = $("#prompt").val();
+
+            $.post('/deletebland', { prompt: prompt }, (res) => {
+                if (res.status == 201) {
+                    console.log(res.message);
+                } else {
+                    console.log(res.message);
+                }
+            }, 'json')
+        });
+
+        $("#insertButton").on("click", (e) => {
+            const prompt = $("#prompt").val();
+
+            $.post('/insertbland', { prompt: prompt }, (res) => {
+                if (res.status == 201) {
+                    console.log(res.message);
+                } else {
+                    console.log(res.message);
+                }
+            }, 'json')
+        });
+    });
+</script>

@@ -1,0 +1,179 @@
+﻿@{
+    Layout = "_Layout";
+    ViewBag.title = "MailManage";
+}
+
+@try
+{
+    <div class="flex-grow-1 container-p-y container-fluid">
+        <div class="card">
+            <div class="card-header row">
+                <div class="col-6">
+                    <h5 class=" ms-5">Users</h5>
+                </div>
+                <div class="col-6 d-flex justify-content-end">
+                    <div class="me-3">
+                        <select class="form-select" id="companyIdx"  onchange="handleEmailChange();">
+                            @foreach (var item in ViewBag.companyList)
+                            {
+                                <option value=@item.id>@item.name</option>
+                            }
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <button class="btn btn-secondary create-new btn-primary waves-effect waves-light" type="button" onclick="OnAddModal();">
+                            <span>
+                                <i class="ti ti-plus me-sm-1"></i>
+                                <span class="d-none d-sm-inline-block">Add</span>
+                            </span>
+                        </button>
+                        <div class="modal fade" id="modalCenter" tabindex="-1" style="display: none;" aria-modal="true" role="dialog">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modalCenterTitle">Add member</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="OnCloseModal();"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="mb-4">
+                                            <label class="form-label">Email</label>
+                                            <input type="email" class="form-control" id="memberEmail" placeholder="sherman@zahavas.com">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label class="form-label">Role</label>
+                                            <select class="form-select" id="memberRole">
+                                                <option value=1>admin</option>
+                                                <option value=2>operator</option>
+                                                <option value=3>view</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-label-secondary waves-effect" data-bs-dismiss="modal" onclick="OnCloseModal();">
+                                            Close
+                                        </button>
+                                        <button type="button" class="btn btn-primary waves-effect waves-light" onclick="OnSave();">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="card-body" id="memberList">
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" id="modalType" val="" />
+    <input type="hidden" id="memberIdx" val="">
+}
+catch (Exception ex)
+{
+    Console.WriteLine("dashbaord" + ex.Message);
+}
+
+<script type="text/javascript">
+    $(document).ready(() => {
+        loadMembers();
+    });
+
+    function loadMembers() {
+        const companyIdx = $('#companyIdx').val();
+        if (companyIdx == '') return;
+
+        $.post('/getMembers', {companyIdx : companyIdx}, function (data) {
+            try {
+                $('#memberList').html(data);
+            } catch (e) {
+                console.log(e);
+            } finally {
+            }
+        }, 'html');
+    }
+
+    const OnSave = () => {
+        const modalType = $('#modalType').val();
+
+        if (modalType == 'add') {
+            OnAddMember();
+        } else if (modalType == 'edit') {
+            OnEditMember();
+        }
+
+        OnCloseModal();
+    }
+
+    const OnAddMember = () => {
+        const companyIdx = $('#companyIdx').val();
+        const memberEmail = $('#memberEmail').val();
+        const memberRole  = $('#memberRole').val();
+
+        $.post('/addMember', { companyIdx: companyIdx, memberEmail: memberEmail, memberRole: memberRole }, (res) => {
+            if (res.status == 201) {
+                loadMembers();
+                OnOpenToast('success', res.message);
+            } else {
+                OnOpenToast('error', res.message);
+            }
+        }, 'json')
+    }
+
+    const OnEditMember = (memberIdx) => {
+        const memberEmail = $('#memberEmail').val();
+        const memberRole = $('#memberRole').val();
+
+        $.post('/editMember', { memberIdx: memberIdx, memberEmail: memberEmail, memberRole: memberRole }, (res) => {
+            if (res.status == 201) {
+                loadMembers();
+                OnOpenToast('success', res.message);
+            } else {
+                OnOpenToast('error', res.message);
+            }
+        }, 'json')
+    }
+
+    const OnDeleteMember = (memberIdx) => {
+
+        $.post('/deleteMember', { memberIdx: memberIdx }, (res) => {
+            if (res.status == 201) {
+                loadMembers();
+                OnOpenToast('success', res.message);
+            } else {
+                OnOpenToast('error', res.message);
+            }
+        }, 'json')
+    }
+
+    const OnAddModal = () => {
+        $('#modalType').val('add');
+        $('#modalCenterTitle').val('Add Member');
+
+        $('#memberEmail').val('');
+        $('#memberRole').val(0);
+
+        OnOpenModal();
+    }
+
+    const OnEditModal = () => {
+        $('modalType').val('edit');
+        $('modalCenterTitle').val('Edit Member');
+
+        $('#memberEmail').val('');
+        $('#memberRole').val(0);
+
+        OnOpenModal();
+    }
+
+    const OnOpenModal = () => {
+        $('#modalCenter').addClass("show");
+        $('#modalCenter').css('display', 'block');
+    }
+
+    const OnCloseModal = () => {
+        $('#modalCenter').removeClass("show");
+        $('#modalCenter').css('display', 'none');
+    }
+</script>

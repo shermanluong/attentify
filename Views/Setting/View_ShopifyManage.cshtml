@@ -1,0 +1,74 @@
+﻿@{
+    Layout = "_Layout";
+    ViewBag.title = "ShopifyManage";
+}
+
+@try
+{
+    <div class="flex-grow-1 container-p-y container-fluid">
+        <div class="card mb-6">
+            <div class="card-header header-elements mb-0 pb-1 ms-2">
+                <h5 class="mb-0 me-2">Attentify App</h5>
+                <div class="card-header-elements ms-auto">
+                    <button class="btn btn-sm create-new btn-primary waves-effect waves-light" type="button" onclick="handInstallApp();">
+                        Install
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <p class="mb-0"> Respond to customer inquiries faster with an AI-powered inbox for growing teams</p>
+                <p> Connect your most important channels for communicating with customers, easily personalize your AI-powered Knowledge Base, and save thousands of dollars every year with AI tools built for growing teams.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header header-elements mb-2 ms-2">
+                <h5 class="mb-0 me-2">Shopify Account Table</h5>
+            </div>
+            <div class="card-body" id = "shopify_list">
+                
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            loadShopifyList();
+        });
+
+        function loadShopifyList() {
+            $.post('/setting/GetShopifyList', {}, function (data) {
+                try {
+                    $('#shopify_list').html(data);
+                } catch (e) {
+                    console.log(e);
+                } finally {
+                }
+            }, 'html');
+        }
+
+        function handInstallApp() {
+            $.post('/shopify/auth', {}, function (data) {
+                if (data.status == 201) {
+                    window.location.href = data.authorizationUrl;
+                } else {
+                    console.log("Delete failed");
+                }
+            }, 'json')
+        }
+
+        function handleDeleteClick(shopifyIdx) {
+            $.post('/setting/DeleteShopify', { strShopifyIdx: shopifyIdx }, function (data) {
+                console.log(data.status);
+                if (data.status == 201) {
+                    loadShopifyList();
+                } else {
+                    console.log("Delete failed");
+                }
+            }, 'json')
+        }
+    </script>
+}
+catch (Exception ex)
+{
+    Console.WriteLine("dashbaord" + ex.Message);
+}

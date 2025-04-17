@@ -1,0 +1,15 @@
+﻿@{
+    Layout = "_Layout";
+    ViewBag.title = "Dashboard";
+}
+
+@try{
+    <div class="flex-grow-1 container-p-y container-fluid">
+        <h4 class="py-4 mb-6">Error</h4>
+        <p>
+            This page is under the construction!
+        </p>
+    </div>
+}catch(Exception ex){
+    Console.WriteLine("dashbaord" + ex.Message);
+}

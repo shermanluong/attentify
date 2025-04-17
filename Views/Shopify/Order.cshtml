@@ -1,0 +1,64 @@
+﻿@using GoogleLogin.Services;
+
+<div class="table-responsive">
+    <table class="table order-table">
+        <thead>
+            <tr>
+                <th>Order</th>
+                <th>Date</th>
+                <th>Customer</th>
+                <th>Channel</th>
+                <th>Total</th>
+                <th>Payment status</th>
+                <th>Fulfillment status</th>
+                <th>Items</th>
+                <th>Tags</th>
+                @*<th>Action</th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in ViewBag.orders)
+            {
+                <tr class="@(order.or_fulfill_status == 1 ? "fulfilled" : "") @(order.or_status == 2 ? "cancelled" : "")">
+                    <th>@order.or_name</th>
+                    <td>@order.or_date.ToString()</td>
+                    <td>@order.or_customer</td>
+                    <td>@order.or_channel</td>
+                    <td>@($"{order.or_total:C}")</td>
+                    <td class="color-primary">@ShopifyService.mapPaymentStatus[order.or_payment_status]</td>
+                    @if (order.or_fulfill_status == 1)
+                    {
+                        <td class="color-primary"><span class="badge badge-pill badge-light  px-2">@ShopifyService.mapFulfiilmentStatus[order.or_fulfill_status]</span></td>
+                    }
+                    else if (order.or_fulfill_status == 0)
+                    {
+                        <td class="color-primary"><span class="badge badge-warning px-2">@ShopifyService.mapFulfiilmentStatus[order.or_fulfill_status]</span></td>
+                    }
+                    @*<td class="color-primary">@ShopifyService.mapFulfiilmentStatus[order.or_fulfill_status]</td>*@
+                    <td>@($"{order.or_itemCnt} {(order.or_itemCnt > 1 ? "items" : "item")}")</td>
+                    <td class="color-primary">@order.or_tags</td>
+                    @*<td>
+                        @if(order.or_fulfill_status == 0 && (order.or_status == null || order.or_status == 0))
+                        {
+                            <div class="btn-group">
+                                <button id="btnGroupDrop1" type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Dropdown</button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">cancel</a>
+                                    <a class="dropdown-item" href="#">refund</a>
+                                    <a class="dropdown-item" href="#">partial refund</a>
+                                    <a class="dropdown-item" href="#">send tracking</a>
+                                </div>
+                            </div>
+                        }
+                    </td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@{
+    Html.RenderPartial("~/Views/Shared/Pagenation.cshtml");
+}
+<input type="hidden" name="pageNo" value="@ViewBag.PageNo" />
+<input type="hidden" name="pagePerCnt" value="@ViewBag.PagePerCnt" />
+<input type="hidden" name="pageAllCnt" value="@ViewBag.AllCnt" />

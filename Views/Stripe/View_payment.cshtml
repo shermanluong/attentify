@@ -1,0 +1,68 @@
+﻿@{
+    Layout = "_Layout";
+    ViewBag.title = "Dashboard";
+}
+
+@try{
+    <div class="flex-grow-1 container-p-y container-xxl">
+        <div class="row mb-12 g-6">
+            <div class="col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Trail Account</h5>
+                        <p class="card-text">
+                            $9 per month
+                        </p>
+                        <button id="trialButton" class="btn btn-outline-primary waves-effect">Subscrible</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Pro Account</h5>
+                        <p class="card-text">
+                            $29 per month
+                        </p>
+                        <button id="proButton" class="btn btn-outline-primary waves-effect">Subscrible</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Business Account</h5>
+                        <p class="card-text">
+                            $59 per month
+                        </p>
+                        <button id ="businessButton" class="btn btn-outline-primary waves-effect">Subscrible</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}catch(Exception ex){
+    Console.WriteLine("dashbaord" + ex.Message);
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#trialButton").on("click", (e) => {
+            createCheckoutSession(1);
+        });
+
+        $("#proButton").on("click", (e) => {
+            createCheckoutSession(2);
+        });
+
+        $("#businessButton").on("click", (e) => {
+            createCheckoutSession(3);
+        });
+
+        const createCheckoutSession = (planType) => {
+            $.post('/createCheckoutSession', { planType: planType }, (res) => {
+                window.location.href = res.url;
+            }, 'json')
+        }
+    });
+</script>

@@ -1,0 +1,156 @@
+﻿@{
+    Layout = "_Layout";
+    ViewBag.title = "Company";
+}
+
+@try
+{
+    <div class="flex-grow-1 container-p-y container-fluid">
+        <div class="card">
+            <div class="row">
+                <h5 class="card-header ms-5 col">Companies</h5>
+                <div class="text-end mt-5 me-10 col">
+                    <button class="btn btn-secondary create-new btn-primary waves-effect waves-light" type="button" onclick="OnAddModal();">
+                        <span>
+                            <i class="ti ti-plus me-sm-1"></i>
+                            <span class="d-none d-sm-inline-block">Add</span>
+                        </span>
+                    </button>
+                    <div class="modal fade" id="modalCenter" tabindex="-1" style="display: none;" aria-modal="true" role="dialog">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalCenterTitle">Add company</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="OnCloseModal();"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-4">
+                                        <label class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="companyName" placeholder="Attentify">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label">Company site</label>
+                                        <input id="companySite" class="form-control" type="text" placeholder="https://attentify.io">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-label-secondary waves-effect" data-bs-dismiss="modal" onclick="OnCloseModal();">
+                                        Close
+                                    </button>
+                                    <button type="button" class="btn btn-primary waves-effect waves-light" onclick="OnSave();">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body" id="companyList">
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" id="modalType" val=""/>
+    <input type="hidden" id="companyIdx" val="">
+}
+catch (Exception ex)
+{
+    Console.WriteLine("dashbaord" + ex.Message);
+}
+
+<script type="text/javascript">
+    $(document).ready(() => {
+        loadMembers();
+    });
+
+    function loadMembers() {
+        $.post('/getCompanies', {}, function (data) {
+            try {
+                $('#companyList').html(data);
+            } catch (e) {
+                console.log(e);
+            } finally {
+            }
+        }, 'html');
+    }
+
+    const OnSave = () => {
+        const modalType = $('#modalType').val();
+
+        if (modalType == 'add') {
+            OnAddMember();
+        } else if (modalType == 'edit') {
+            OnEditMember();
+        }
+        
+        OnCloseModal();
+    }
+
+    const OnAddMember = () => {
+        const companyName = $('#companyName').val();
+        const companySite = $('#companySite').val();
+
+        $.post('/addCompany', { companyName: companyName, companySite: companySite }, (res) => {
+            if (res.status == 201) {
+                loadMembers();
+                OnOpenToast('success', res.message);
+            } else {
+                OnOpenToast('error', res.message);
+            }
+        }, 'json') 
+    }
+
+    const OnEditMember = (companyIdx) => {
+        const companyName = $('#companyName').val();
+        const companySite = $('#companySite').val();
+
+        $.post('/editCompany', { companyIdx: companyIdx, companyName: companyName, companySite: companySite }, (res) => {
+            if ( res.status == 201  ) {
+                loadMembers();
+                OnOpenToast('success', res.message);
+            } else {
+                OnOpenToast('error', res.message);
+            }
+        }, 'json')
+    }
+
+    const OnDeleteMember = (companyIdx) => {
+        $.post('/deleteCompany', { companyIdx: companyIdx }, (res) => {
+            if (res.status == 201) {
+                loadMembers();
+                OnOpenToast('success', res.message);
+            } else {
+                OnOpenToast('error', res.message);
+            }
+        }, 'json')
+    }
+
+    const OnAddModal = () => {
+        $('#modalType').val('add');
+        $('#modalCenterTitle').val('Add company');
+
+        $('#companyName').val('');
+        $('#companySite').val('');
+
+        OnOpenModal();
+    }
+    
+    const OnEditModal = () => {
+        $('modalType').val('edit');
+        $('modalCenterTitle').val('Edit Company');
+
+        $('#companyName').val('');
+        $('#companySite').val('');
+
+        OnOpenModal();
+    }
+
+    const OnOpenModal = () => {
+        $('#modalCenter').addClass("show");
+        $('#modalCenter').css('display', 'block');
+    }
+
+    const OnCloseModal = () => {
+        $('#modalCenter').removeClass("show");
+        $('#modalCenter').css('display', 'none');
+    }
+</script>

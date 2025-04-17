@@ -1,0 +1,18 @@
+Logs/
+.vs/
+bin/
+obj/
+publish/
+googlelogin.sin
+appsettings.json
+
+
+[http]
+    postBuffer = 99999999
+[core]
+    packedGitLimit = 128m
+    packedgitWindowSize = 128m
+[pack]
+    deltaCacheSize = 128m
+    packSizeLimit = 128m
+    windowMemory = 128m

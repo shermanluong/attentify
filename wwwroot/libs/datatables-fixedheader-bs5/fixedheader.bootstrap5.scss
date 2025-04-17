@@ -1,0 +1,40 @@
+@use '~/scss/_bootstrap-extended/include' as light;
+@use '~/scss/_bootstrap-extended/include-dark' as dark;
+@import '~/scss/_custom-variables/libs';
+@import 'datatables.net-fixedheader-bs5/css/fixedHeader.bootstrap5';
+
+// Fixed header Style
+.dt-fixedheader.fixedHeader-floating.table.dataTable {
+  width: auto !important;
+}
+.dt-fixedheader.fixedHeader-locked.table.dataTable {
+  display: none;
+}
+
+// Last style
+@if $enable-light-style {
+  .light-style {
+    .dtfh-floatingparenthead {
+      border-bottom: 1px solid light.$table-border-color;
+    }
+    .table-bordered.dt-fixedheader.fixedHeader-floating.table.dataTable thead > tr > th,
+    .table-bordered.dt-fixedheader.fixedHeader-locked.table.dataTable thead > tr > th {
+      border-bottom-width: 1px;
+      border-color: light.$table-border-color;
+    }
+  }
+}
+
+// Dark style
+@if $enable-dark-style {
+  .dark-style {
+    .dtfh-floatingparenthead {
+      border-bottom: 1px solid dark.$table-border-color;
+    }
+    .table-bordered.dt-fixedheader.fixedHeader-floating.table.dataTable thead > tr > th,
+    .table-bordered.dt-fixedheader.fixedHeader-locked.table.dataTable thead > tr > th {
+      border-bottom-width: 1px;
+      border-color: dark.$table-border-color;
+    }
+  }
+}

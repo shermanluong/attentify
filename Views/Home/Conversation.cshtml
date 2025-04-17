@@ -1,0 +1,610 @@
+﻿@{
+	Layout = "_Layout";
+	ViewBag.title = "Conversation";
+}
+<div id="ui-tabs-25" class="ui-tabs-panel ui-widget-content ui-corner-bottom" aria-live="polite" aria-labelledby="ui-id-26" role="tabpanel" style="display: block;" aria-expanded="true" aria-hidden="false">
+	<div class="conversation_tab  default-colors">
+		<div class="user conversation_header">
+			<div class="commands_button bnt-prev" style="">
+				<span data-icon="E"></span>
+			</div>
+			<div class="conversation_header_left">
+				<div class="conversation_information_button"
+					 style="display: flex; background-image: url(https://robincontentdesktop.blob.core.windows.net/channels/4/color.svg);">
+					<span class="conversation_information_icon" data-icon=""></span>
+				</div>
+				<div class="name">
+					<span class="online_indicator "></span>
+					<span class="customer_name">@(ViewBag.Customer != null ? ViewBag.Customer.strName : "")</span>
+				</div>
+				<span class="subject profile_name external_forward">
+					<span class="subject_string">@(ViewBag.Customer != null ? ViewBag.Customer.strSubject : "")</span>
+				</span>
+				<span class="profile_name no_mobile separator"> - </span>
+				<span class="no_mobile navigation_to subject profile_name">@(ViewBag.Customer != null ? ViewBag.Customer.strEmail : "")</span>
+				<div class="tags d-none" style="">
+					<div class="tags_popup"></div>
+					<div class="unassigned" style="display: none">
+						<div class="search">
+							<span class="search_icon icon" data-icon="Q"></span>
+							<input class="searchtag">
+							<span class="cancel_icon icon" data-icon="-"></span>
+						</div>
+						<div class="tags_list">
+							<ul>
+							</ul>
+						</div>
+					</div>
+					<span class="addtag">
+						<span class="icon" data-icon="$"></span>
+						<span class="caption">Add tag</span>
+					</span>
+					<div class="manual_tags">
+					</div>
+				</div>
+			</div>
+			<div class="fullscreen_buttons">
+				<div class="button hold_button">
+					<span title="Hold call" class="image" data-icon=""></span>
+					<div class="container icon mini_spinner">
+						<span class="icon mini_spinner-bg"></span>
+						<span class="icon mini_spinner-subtract"></span>
+					</div>
+					<span class="bottom_text hold_button_text">Hold call</span>
+				</div>
+				<div class="button takeownership_button" style="display: none;">
+					<span title="Take ownership" class="image" data-icon="C"></span>
+					<span class="bottom_text">Take ownership</span>
+				</div>
+				<div class="button leave_button" style="display: none;">
+					<span title="Leave" class="image" data-icon="p"></span>
+					<span class="bottom_text">Leave</span>
+				</div>
+				<div class="button movetoinbox_button" style="display: none;">
+					<span title="Move to inbox" class="image" data-icon="x"></span>
+					<span class="bottom_text">Move to inbox</span>
+				</div>
+				<div class="button unsnooze_button" style="display: none;">
+					<span title="Unsnooze" class="image" data-icon="*"></span>
+					<span class="bottom_text">Unsnooze</span>
+				</div>
+				<div class="button snooze_button active" style="display: none;">
+					<span title="Snooze" class="image" data-icon=""></span>
+					<span class="bottom_text">Snooze</span>
+					<span class="selector" data-icon="k"></span>
+				</div>
+				<div class="button forward_button active" style="display: none;">
+					<span title="Forward" class="image" data-icon="m"></span>
+					<span class="bottom_text">Forward</span>
+					<span class="selector" data-icon="k"></span>
+				</div>
+				<div class="button reopen_button" style="display: none;">
+					<span title="Re-open" class="image" data-icon="#"></span>
+					<span class="bottom_text">Re-open</span>
+				</div>
+
+				<div class="button archive_button  active" style="display: flex;">
+					<span title="Archive" class="image" data-icon="b"></span>
+					<span class="bottom_text">Archive</span>
+				</div>
+
+				<div class="button hang_up_button">
+					<span title="Hang up" class="image" data-icon=""></span>
+					<span class="bottom_text">Hang up</span>
+				</div>
+
+				<div class="button end_wrap_up_button" style="display: none;">
+					<span class="bottom_text">End Wrap-up</span>
+				</div>
+			</div>
+			<div class="selector dropdown_commands">
+				<div class="content">
+					<ul>
+						<li class="takeownership_button" style="display: none;">
+							<span data-icon="C"></span>
+							<span class="label">Take ownership</span>
+						</li>
+
+						<li class="leave_button" style="display: none;">
+							<span data-icon="p"></span>
+							<span class="label">Leave</span>
+						</li>
+
+
+						<li class="unsnooze_button" style="display: none;">
+							<span data-icon="*"></span>
+							<span class="label">Unsnooze</span>
+						</li>
+
+						<li class="snooze_button active" style="display: flex;">
+							<span data-icon=""></span>
+							<span class="label">Snooze</span>
+						</li>
+
+						<li class="forward_button active" style="display: flex;">
+							<span data-icon="m"></span>
+							<span class="label">Forward</span>
+						</li>
+
+						<li class="reopen_button" style="display: none;">
+							<span data-icon="#"></span>
+							<span class="label">Re-open</span>
+						</li>
+
+						<li class="archive_button  active" style="display: flex;">
+							<span data-icon="b"></span>
+							<span class="label">Archive</span>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="conversation_container conversation_container_with_panel">
+			<div class="conversation history conversation_with_panel" style="right: 320px;">
+				<div class="addrelation_popup ui_addrelation_popup" style="display: none; bottom: 331px;">
+					<div class="content">
+						<div class="caption">
+							<span class="img" data-icon="y"></span> <span class="label">
+								Start new
+								conversation
+							</span>
+						</div>
+						<div class="close"> <span data-icon="g"></span> </div>
+						<div class="fields clearfix">
+							<ul class="reset">
+								<li class="customer" style="display: none;">
+									<label id="label_name" for="Name">Name:</label> <input id="Name" name="Name" type="text" maxlength="255" tabindex="1" value="">
+								</li>
+								<li class="customer" style="display: none;">
+									<label id="label_email" for="Email">E-mail:</label> <input id="Email" name="Email" type="text" maxlength="255" tabindex="1" value="" readonly="">
+									<div id="email_Error" class="error-label">
+										<div title=""> <span class="text"></span> </div>
+									</div>
+								</li>
+								<li class="customer" style="display: none;">
+									<label id="label_phone" for="Phone">Phone:</label> <input id="Phone" name="Phone" type="text" maxlength="255" tabindex="1" value="">
+								</li>
+								<li id="subject">
+									<label id="label_subject" for="Subject">Subject:</label> <input id="Subject"
+																		 class="subject" name="Subject" type="text" maxlength="255" tabindex="1" value="">
+									<div class="categories">
+										<ul class="auto_suggestions" style="display: none; "></ul>
+									</div>
+								</li>
+								<li id="web_store" class="hidden">
+									<label id="label_web_store" for="WebStore"></label>
+									<select id="WebStore" class="web_store" name="WebStore"></select>
+								</li>
+							</ul>
+						</div>
+						<div class="actions">
+							<ul id="actions">
+								<li class="popup_action mail enabled">
+									<a href="#" class="action_button mail">
+										<img src="https://robincontentdesktop.blob.core.windows.net/channels/4/color.svg">
+										<span id="channel_email">E-mail</span>
+									</a>
+								</li>
+								<li class="popup_action phone disabled">
+									<a href="#" class="action_button phone">
+										<img src="https://robincontentdesktop.blob.core.windows.net/channels/5/color.svg">
+										<span id="channel_phone">Phone</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="participants_popup_container" style="position: absolute; left: 536.359px; top: 62px;"></div>
+
+				<div class="history_area owner" style="bottom: 331px;">
+					<ul class="bubble_list" id="conversationList">
+						
+					</ul>
+				</div>
+				<div class="history_area_shadow"></div>
+				<div class="create_message create_message_with_panel" style="width: 50%">
+					<input id="lastMessageId" name="lastMessageId" type="hidden" value="ea399316-98b7-ef11-88cf-000d3a274416">
+					<div class="messagebar"></div>
+					<table id="message-area-container" cellspacing="0" class="reset">
+						<tbody>
+							<tr>
+								<td id="external-container">
+									<form name="external" id="external" action="" method="post">
+										<input id="external_conversationId" name="external_conversationId" type="hidden" value="e7bf08b7-49a0-ef11-88cf-000d3a274416">
+										<input id="external_channel" name="channel" type="hidden" value="4">
+										<input id="external_channel_ismessaging" name="channel_ismessaging" type="hidden" value="False">
+										<input id="external_channel_supports_attachments" name="channel_supports_attachments" type="hidden"
+											   value="True">
+										<input id="external_channel_supports_text_editor" name="channel_supports_text_editor" type="hidden"
+											   value="True">
+										<input id="external_channel_account" name="channel_account" type="hidden"
+											   value="fd54b9e0-b00c-e611-80c8-000d3a226f8a">
+										<input id="external_channel_icon_url" name="channel_icon_url" type="hidden"
+											   value="https://robincontentdesktop.blob.core.windows.net/channels/4/color.svg">
+										<input id="external_scope" name="scope" type="hidden" value="2">
+										<input id="webstore_id" name="webstore_id" type="hidden" value="f954b9e0-b00c-e611-80c8-000d3a226f8a">
+										<input id="subject" name="subject" type="hidden" value="">
+										<input id="external_guid" name="guid" type="hidden" value="">
+										<input id="external_isPrivate" name="isPrivate" type="hidden" value="False">
+										<input id="is_follow_request" name="is_follow_request" type="hidden" value="false">
+										<input id="external_suggestionId" name="suggestion_id" type="hidden" value="0">
+										<div class="message_area bubble_edit external droppable ui-droppable sendmail" data-initial-text=" "
+											 style="height: 316px;">
+											<div class="header">
+												<ul class="reset horizontal alignleft">
+													<li class="label">
+														Reply
+													</li>
+													<li class="expirewarning">
+														<div class="message">Reply window expired</div>
+													</li>
+												</ul>
+												<ul class="reset horizontal alignright participants" data-scope="external">
+													<li></li>
+													<li class="cc_bcc_container d-none">
+														<div class="cc_bcc"><span class="cc">Cc</span><span class="bcc">Bcc</span></div>
+													</li>
+													<li class="participant " data-person-type="Relation">
+														<div class="channel_avatar">
+															<div class="avatar">
+																<span class="icon" data-icon="5" title="Chris Allen"></span>
+															</div>
+														</div>
+														<span class="current_channel"
+															  style="background-image: url(&quot;https://robincontentdesktop.blob.core.windows.net/channels/4/color.svg&quot;);"></span>
+													</li>
+												</ul>
+											</div>
+
+											<div class="edit_area">
+												<div class="additional_input">
+													<div class="to_area mailfield_area">
+														<span class="label">To: </span>
+														<span class="collapse_icon" data-icon="u"></span>
+														<span class="expand_icon" data-icon="k"></span>
+														<div class="container">
+															<div class="emailaddresses">
+																<div class="emailaddress ">
+																	<span class="label initial">@(ViewBag.Customer == null ? "" : ViewBag.Customer.strEmail)</span>
+																</div>
+															</div>
+															<div class="input_field">
+																<input class="email_input" readonly="" style="display: none;"><span class="suggestions"></span>
+																<div class="input_error" style="display: none;">
+																	<div class="title"><span>Email is invalid</span></div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="cc_area mailfield_area">
+														<span class="label">Cc: </span>
+														<span class="collapse_icon" data-icon="u"></span>
+														<span class="expand_icon" data-icon="k"></span>
+														<div class="container">
+															<div class="emailaddresses"></div>
+															<div class="input_field">
+																<input class="email_input" readonly="" style="display: none;"><span class="suggestions"></span>
+																<div class="input_error" style="display: none;">
+																	<div class="title"><span>Email is invalid</span></div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="bcc_area mailfield_area">
+														<span class="label">Bcc: </span>
+														<span class="collapse_icon" data-icon="u"></span>
+														<span class="expand_icon" data-icon="k"></span>
+														<div class="container">
+															<div class="emailaddresses"></div>
+															<div class="input_field">
+																<input class="email_input" readonly="" style="display: none;"><span class="suggestions"></span>
+																<div class="input_error" style="display: none;">
+																	<div class="title"><span>Email is invalid</span></div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<a href="#" id="add_external_participant" class="add_relation_button" style="display: none">
+													<span class="icon" data-icon="y"></span>
+													<span>Start new conversation</span>
+												</a>
+												<textarea class="external" cols="40" name="externalMessage" rows="10" title="Send a message to the customer" style="" placeholder="Type your reply here" aria-hidden="true"></textarea>
+											</div>											
+											<div class="footer">
+												<div class="alignright">
+													<ul class="reset horizontal send_button OpenAreFollowed" id="ExternalSendButtonContainer">
+														<li class="lock" title="Conversation is in public modus" style="display: none;">
+															<span class="locked" data-icon="+"></span>
+															<span class="unlocked" data-icon=","></span>
+														</li>														
+														<li class="send_button external-sendbutton">
+															<button class="desktop active button" type="button" id="SendExternalMessageButton">Send</button> 
+														</li>
+														<li class="send_button external-sendbutton">
+															<input class="desktop active button d-none" type="button" id="processAI" value="ProcessAI"
+																   title="Parse the message using AI">
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</form>									
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+				<div class="order_info_widget">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="loading d-none">
+								<span class="smaller-size">Loading...</span>
+							</div>
+							<div class="mobile-card-body" id="order_info">								
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="panels">
+				<span class="panel_icons panel_open_icon" data-icon="E" style="display: none;"></span>
+
+				<div class="right_shadow"></div>
+				<div class="panels_inner panel_width" style="">
+					<div class="panel_tabs">
+						<ul class="reset">
+							<li class="selected">
+								<a class="panel_tab_customer" href="#" data-panel="customer" data-icon="K"></a>
+							</li>
+						</ul>
+						<span class="panel_close" title="Close" data-icon="D"></span>
+					</div>
+					<div class="panel-container" data-level="1">
+						<ul class="reset panels_content levels">
+							<li id="customer_panel" class="panel level1 identifier_e7bf08b7-49a0-ef11-88cf-000d3a274416">
+								<div class="caption">
+									<div class="customer">Customer</div>
+									<div class="new_conversation d-none">
+										<span class="icon" data-icon="y"></span>
+										<span class="label">Start new conversation</span>
+									</div>
+								</div>
+								<div class="customer-tour"></div>
+								<ul id="panel-level1" class="reset views" style="height: 302px;">
+									<li id="level1_view" class="view">
+										<ul class="widget_groups">
+											<li class="widget_group">
+												<div class="header profileheader" data-subitem="" data-subitem-level="">
+													<span class="edit_profile_icon" data-icon="n"></span>
+													<span class="connect_profile_icon" data-icon="G"></span>
+													<span class="cancel_profile_icon" style="display: none;" data-icon="g"></span>
+													<span class="save_profile_icon" style="display: none;" data-icon="r"></span>
+													<h3><span data-icon="K"></span>Profile</h3><span class="connected_profiles_counter"></span>
+												</div>
+												<ul class="widgets reset">
+													<li class="widget" data-index="0" data-widget-name="online">
+														<div class="widget_content separator">
+															<div class="online profile clearfix">
+																<ul class="profiledata">
+																	<li><span class="label">Name:</span><span class="value fullname">@(ViewBag.Customer == null ? "" : ViewBag.Customer.strName)</span></li>
+																	<li><span class="label">Phone:</span><span class="value phone">@(ViewBag.Customer == null ? "" : string.IsNullOrEmpty(ViewBag.Customer.strPhone) ? "-" : ViewBag.Customer.strPhone)</span></li>
+																	<li>
+																		<span class="label">E-mail address:</span><span class="value email">@(ViewBag.Customer == null ? "" : ViewBag.Customer.strEmail)</span>
+																	</li>
+																</ul>
+															</div>
+															<div class="user_widget_message_container"></div>
+														</div>
+													</li>
+												</ul>
+											</li>
+											<li class="widget_group d-none">
+												<div class="header pinnedmessagesheader selectable" data-subitem="pinnedmessages"
+													 data-subitem-level="3">
+													<div class="arrow" data-icon="z"></div>
+													<h3><span data-icon=""></span>Pinned messages</h3><span class="connected_profiles_counter"></span>
+												</div>
+												<ul class="widgets reset">
+													<li class="widget" data-index="1" data-widget-name="pinnedmessages">
+														<div class="widget_content separator">
+															<div class="orders clearfix pinnedmessages">
+																<ul>
+																	<li>
+																		<div>
+																			There are no pinned messages. Hit the pin icon on an internal message to pin the
+																			message.
+																		</div>
+																	</li>
+																</ul>
+															</div>
+														</div>
+													</li>
+												</ul>
+											</li>
+											<li class="widget_group d-none">
+												<div class="header ordersheader selectable" data-subitem="shopifyOrders" data-subitem-level="4">
+													<div class="arrow" data-icon="z"></div>
+													<h3><span data-icon="B"></span>Orders</h3><span class="connected_profiles_counter"></span>
+												</div>
+												<ul class="widgets reset">
+													<li class="widget" data-index="2" data-widget-name="shopifyOrders">
+														<div class="widget_content separator">
+															<div class="orders clearfix">
+																<ul>
+																	<li><em>An unexpected issue occurred while connecting with Shopify</em></li>
+																</ul>
+															</div>
+														</div>
+													</li>
+												</ul>
+											</li>
+											<li class="widget_group d-none">
+												<div class="header conversationsheader selectable" data-subitem="conversations"
+													 data-subitem-level="6">
+													<div class="arrow" data-icon="z"></div>
+													<h3><span data-icon="8"></span>Conversations</h3><span class="connected_profiles_counter"></span>
+												</div>
+												<ul class="widgets reset">
+													<li class="widget" data-index="3" data-widget-name="conversations">
+														<div class="widget_content">
+															<ul class="list selectable reset">
+																<li class="conversation" data-conversation-id="e7bf08b7-49a0-ef11-88cf-000d3a274416"
+																	data-initiator-name="Chris Allen">
+																	<span class="conversation_state_container">
+																		<span class="state service_level_green"></span>
+																	</span><span class="conversation_widget icon"
+																				 style="background-image: url(https://robincontentdesktop.blob.core.windows.net/channels/4/color.svg)"></span>
+																	<div>
+																		<span class="message_content">
+																			<strong>
+																				New customer message on November 11, 2024 at
+																				11:26 am
+																			</strong> - I never received my order
+																		</span><span class="date"
+																					 data-datetime="1731342399650">NOV 11, 11:26</span>
+																	</div>
+																</li>
+																<li class="conversation" data-conversation-id="8d2218af-439f-ef11-88cf-000d3a274416"
+																	data-initiator-name="Chris Allen">
+																	<span class="conversation_state_container">
+																		<span class="state default"></span>
+																	</span><span class="conversation_widget icon"
+																				 style="background-image: url(https://robincontentdesktop.blob.core.windows.net/channels/4/color.svg)"></span>
+																	<div>
+																		<span class="message_content">
+																			<strong>Re: Order #UK110985 confirmed</strong> - Hi,
+																			I Ordered this for a trip I was taking 20/10. Given that this was a...
+																		</span><span class="date" data-datetime="1731229859760">NOV 10, 04:10</span>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li class="panel level2">
+								<div class="caption breadcrumb"></div>
+								<ul id="panel-level2" class="reset views" style="height: 302px;">
+									<li id="level2_view" class="view">
+										<ul class="widget_groups"></ul>
+									</li>
+								</ul>
+							</li>
+							<li class="panel level3">
+								<div class="caption breadcrumb"></div>
+								<ul id="panel-level3" class="reset views" style="height: 302px;">
+									<li id="level3_view" class="view">
+										<ul class="widget_groups"></ul>
+									</li>
+								</ul>
+							</li>
+							<li class="panel level4">
+								<div class="caption breadcrumb"></div>
+								<ul id="panel-level4" class="reset views" style="height: 302px;">
+									<li id="level4_view" class="view">
+										<ul class="widget_groups"></ul>
+									</li>
+								</ul>
+							</li>
+							<li class="panel level5">
+								<div class="caption breadcrumb"></div>
+								<ul id="panel-level5" class="reset views" style="height: 302px;">
+									<li id="level5_view" class="view">
+										<ul class="widget_groups"></ul>
+									</li>
+								</ul>
+							</li>
+							<li class="panel level6">
+								<div class="caption breadcrumb"></div>
+								<ul id="panel-level6" class="reset views" style="height: 302px;">
+									<li id="level6_view" class="view">
+										<ul class="widget_groups"></ul>
+									</li>
+								</ul>
+							</li>
+							<li class="panel level7">
+								<div class="caption breadcrumb"></div>
+								<ul id="panel-level7" class="reset views" style="height: 302px;">
+									<li id="level7_view" class="view">
+										<ul class="widget_groups"></ul>
+									</li>
+								</ul>
+							</li>
+							<li class="panel level8">
+								<div class="caption breadcrumb"></div>
+								<ul id="panel-level8" class="reset views" style="height: 302px;">
+									<li id="level8_view" class="view">
+										<ul class="widget_groups"></ul>
+									</li>
+								</ul>
+							</li>
+							<li class="panel level9">
+								<div class="caption breadcrumb"></div>
+								<ul id="panel-level9" class="reset views" style="height: 302px;">
+									<li id="level9_view" class="view">
+										<ul class="widget_groups"></ul>
+									</li>
+								</ul>
+							</li>
+							<li class="panel level10">
+								<div class="caption breadcrumb"></div>
+								<ul id="panel-level10" class="reset views" style="height: 302px;">
+									<li id="level10_view" class="view">
+										<ul class="widget_groups"></ul>
+									</li>
+								</ul>
+							</li>
+							<li class="panel level11">
+								<div class="caption breadcrumb"></div>
+								<ul id="panel-level11" class="reset views" style="height: 302px;">
+									<li id="level11_view" class="view">
+										<ul class="widget_groups"></ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="conversation_information_popup_container" style="position: absolute; left: 16px; display: none;">
+			<div class="conversation_information_popup">
+				<p class="conversation_link_header">Link to conversation:</p>
+				<div class="conversation_link">
+					<div class="copy_content"></div><span class="copy_icon" data-icon=""></span>
+				</div>
+				<div>
+					<div class="export_pdf button">
+						<div>
+							<a target="_blank"
+							   href="/Conversation/Export/e7bf08b7-49a0-ef11-88cf-000d3a274416?tz=America/New_York&amp;pdf=1">
+								Export as
+								PDF
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="browser snooze_popup_container" style="position: absolute; left: 1176.66px;"></div>
+		<div class="mobile snooze_popup_container"></div>
+		<div class="conversation_group_merge_popup_container" style="display: none;"></div>
+	</div>
+</div>
+<input type="hidden" name="id" value="@ViewBag.id"/>
+<input type="hidden" name="Type" value="@ViewBag.Type"/>
+<input type="hidden" name="GMail" value="@ViewBag.GMail"/>
+<span class="loading">Loading...</span>

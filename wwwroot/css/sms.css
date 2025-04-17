@@ -1,0 +1,134 @@
+﻿.inbox-item {
+    border-bottom: 1px solid #fff;
+    overflow: hidden;
+    padding: .625rem 0;
+    position: relative;
+}
+.inbox-item .inbox-item-img {
+    display: block;
+    float: left;
+    margin-right: 15px;
+    width: 40px;
+}
+
+.inbox-item .inbox-item-img img {
+    width: 40px;
+}
+
+.inbox-item .inbox-item-author {
+    color: #323a46;
+    display: block;
+    margin-bottom: 3px;
+    line-height: 40px;
+}
+.conversation-list li {
+    margin-bottom: 24px;
+}
+
+.conversation-list .chat-avatar {
+    float: left;
+    text-align: center;
+    width: 42px;
+}
+
+.conversation-list .chat-avatar img {
+    border-radius: 100%;
+    width: 100%;
+}
+
+.conversation-list .chat-avatar i {
+    font-size: 12px;
+    font-style: normal;
+}
+
+.conversation-list .conversation-text {
+    float: left;
+    font-size: 12px;
+    margin-left: 12px;
+    width: 70%;
+}
+
+.conversation-list .ctext-wrap {
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    background: #f7f7f7;
+    border-radius: 3px;
+    display: inline-block;
+    padding: 12px;
+    position: relative;
+}
+
+.conversation-list .ctext-wrap i {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    position: relative;
+}
+.conversation-list .ctext-wrap p {
+    margin: 0;
+    padding-top: 3px;
+}
+
+.conversation-list .ctext-wrap:after {
+    right: 99%;
+    top: 0;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-top-color: #f7f7f7;
+    border-width: 8px;
+    margin-left: -1px;
+    border-right-color: #f7f7f7;
+}
+
+.conversation-list .odd .chat-avatar {
+    float: right !important;
+}
+
+.conversation-list .odd .conversation-text {
+    float: right !important;
+    margin-right: 12px;
+    text-align: right;
+    width: 70% !important;
+}
+
+.conversation-list .odd .ctext-wrap {
+    background-color: #fef5e4;
+}
+
+.conversation-list .odd .ctext-wrap:after {
+    border-color: transparent;
+    border-left-color: #fef5e4;
+    border-top-color: #fef5e4;
+    left: 99% !important;
+}
+
+.inbox-item.active > p {
+    color: blue;
+    font-weight: bold;
+}
+
+.inbox-item.active {
+    background-color: #76838f20;
+    padding: 6px;
+}
+
+.phone-users > .inbox-item:hover{
+    cursor: pointer;
+}
+
+.waves-effect {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}

@@ -1,0 +1,27 @@
+﻿@foreach (var sms in ViewBag.smsList)
+{
+    var strClass = sms.sm_from == ViewBag.phone ? "" : "odd";
+    var strDate = "";
+    if (sms.sm_date.Date == DateTime.Today)
+    {
+        strDate = sms.sm_date.ToString("hh:mm");
+    }
+    else
+    {
+        strDate = sms.sm_date.ToString("MM/dd hh:mm");
+    }
+    <li class="clearfix @strClass">
+        <div class="chat-avatar">
+            <img src="~/images/user/form-user.png" alt="male">
+            <i>@strDate</i>
+        </div>
+        <div class="conversation-text">
+            <div class="ctext-wrap">
+                <i></i>
+                <p>
+                    @sms.sm_body
+                </p>
+            </div>
+        </div>
+    </li>
+}                 

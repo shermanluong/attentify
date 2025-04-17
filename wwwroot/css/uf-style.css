@@ -1,0 +1,121 @@
+/*!
+
+ =========================================================
+ * Login Form Bootstrap 1
+ =========================================================
+
+ * Product Page: https://uifresh.net
+ * Copyright 2021 UIFresh (https://uifresh.net)
+ * Coded by UIFresh
+
+ =========================================================
+
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+ */
+ :root {
+    --primary-color: #842029;
+    --primary-color-hover: #5a1118;
+ }
+html, body{
+	height: 100%;
+}
+body {
+    display: flex;
+    align-items: center;
+    /*background-image: linear-gradient(to right, #686f81, #3c8bcf);*/
+}
+a{
+	color: var(--primary-color);
+	text-decoration: none;
+}
+a:hover{
+	color: var(--primary-color-hover);
+}
+.uf-form-signin {
+    width: 100%;
+    max-width: 350px;
+    padding: 15px;
+    margin: auto;
+}
+.uf-input-group .input-group-text {
+    background: #ffffff70;
+    color: #f8f9fa;
+    border: unset;
+    font-size: 18px;
+    padding: 15px;
+    width: 50px;
+}
+
+.uf-input-group .form-control {
+    border: unset;
+    border-left: 1px solid #ffffff05;
+    font-size: 16px;
+    background: #ffffff70;
+}
+
+.uf-input-group .form-control:focus {
+    box-shadow: unset;
+    background: #ffffff;
+}
+.uf-btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.uf-btn-primary:hover {
+    background: var(--primary-color-hover);
+    color: #fff;
+}
+
+.uf-form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.uf-social-login .uf-social-ic+.uf-social-ic{
+	margin-left: 15px;
+}
+.uf-social-ic{
+	width: 40px;
+	height: 40px;
+	background: #fff;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.uf-social-ic:hover{
+	background: var(--maincolor);
+}
+.uf-social-ic:hover i{
+	color: #fff;
+}
+
+.dropdown-divider{
+    border-top: 1px solid white;
+}
+
+.pb-10 {
+    padding-bottom: 2.5rem;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.max-w-\[392px\] {
+    max-width: 392px;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.flex {
+    display: flex;
+}
+
+.m-auto {
+    margin: auto;
+}

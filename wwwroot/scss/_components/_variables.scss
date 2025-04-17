@@ -1,0 +1,168 @@
+// Common
+// *******************************************************************************
+
+$ui-star-size: 1.1em !default;
+$ui-stars-spacer: -0.1em !default;
+$ui-star-filled-color: $yellow !default;
+
+// Navbar (custom navbar)
+// *******************************************************************************
+$navbar-height: 3.5rem !default;
+$navbar-suggestion-width: 100% !default;
+$navbar-suggestion-height: 28rem !default;
+$navbar-suggestion-border-radius: $border-radius !default;
+$navbar-dropdown-width: 22rem !default;
+$navbar-dropdown-content-height: 24.08rem !default;
+$navbar-notifications-dropdown-item-padding-y: 0.75rem !default;
+$navbar-notifications-dropdown-item-padding-x: 1rem !default;
+
+// Menu
+// *******************************************************************************
+
+$menu-width: 16.25rem !default;
+$menu-collapsed-width: 4.375rem !default;
+$menu-collapsed-layout-breakpoint: xl !default;
+
+$menu-font-size: $font-size-base !default;
+
+$menu-item-spacer: 0.375rem !default;
+
+$menu-vertical-link-margin-x: 0.75rem !default;
+$menu-link-spacer-x: 0.5rem !default;
+
+$menu-vertical-link-padding-y: 0.5rem !default;
+$menu-vertical-link-padding-x: 0.75rem !default;
+$menu-vertical-menu-link-padding-y: 0.5rem !default;
+$menu-vertical-menu-level-spacer: 0.5rem !default;
+
+$menu-vertical-header-margin-y: 0.5rem !default;
+$menu-vertical-header-margin-x: 1.25rem !default;
+
+$menu-horizontal-spacer-x: 0.375rem !default;
+$menu-horizontal-item-spacer: 0.25rem !default;
+$menu-horizontal-link-padding-y: 0.5rem !default;
+$menu-horizontal-link-padding-x: 1rem !default;
+$menu-horizontal-menu-link-padding-y: 0.5rem !default;
+$menu-horizontal-menu-level-spacer: 2.75rem !default;
+$menu-horizontal-box-shadow: 0px 1px 4px 0px rgba($black, 0.1) !default;
+
+$menu-sub-width: $menu-width !default;
+$menu-control-width: 2.25rem !default;
+$menu-control-arrow-size: 0.5rem !default;
+
+$menu-icon-expanded-width: 1.375rem !default;
+$menu-icon-expanded-left-spacer: 2.25rem !default;
+$menu-icon-expanded-font-size: 1.375rem !default;
+$menu-icon-expanded-spacer: 0.5rem !default;
+
+$menu-animation-duration: 0.3s !default;
+$menu-max-levels: 5 !default;
+
+$menu-dark-border-color: rgba(255, 255, 255, 0.2) !default;
+$menu-dark-menu-bg: rgba(0, 0, 0, 0.06) !default;
+$menu-light-border-color: rgba(0, 0, 0, 0.06) !default;
+$menu-light-menu-bg: rgba(0, 0, 0, 0.05) !default;
+
+// Custom Options
+// *******************************************************************************
+
+$custom-option-padding: 1.067em !default;
+$custom-option-cursor: pointer !default;
+$custom-option-border-color: $border-color !default;
+$custom-option-border-width: 1px !default;
+$custom-option-image-border-width: 2px !default;
+$custom-option-border-hover-color: $input-border-hover-color !default;
+
+// Switches
+// *******************************************************************************
+
+$switch-font-size: 0.625rem !default;
+$switch-border-radius: 30rem !default;
+
+$switch-width: 2.5rem !default;
+$switch-width-sm: 1.875rem !default;
+$switch-width-lg: 3.25rem !default;
+
+$switch-height: 1.35rem !default;
+$switch-height-sm: 1.125rem !default;
+$switch-height-lg: 1.75rem !default;
+
+$switch-label-font-size: $font-size-base !default;
+$switch-label-font-size-sm: $font-size-xs !default;
+$switch-label-font-size-lg: $font-size-lg !default;
+
+$switch-label-line-height: 1.4 !default;
+$switch-label-line-height-sm: 1.6 !default;
+$switch-label-line-height-lg: 1.47 !default;
+
+$switch-spacer-x: 0.75rem !default;
+$switch-spacer-y: 0.75rem !default;
+$switch-gutter: 0.5rem !default;
+$switch-inner-spacer: 0.25rem !default;
+$switch-inner-spacer-sm: 0.17rem !default;
+
+$switch-square-border-radius: $border-radius !default;
+
+$switch-label-color: $headings-color !default;
+$switch-label-disabled-color: $text-muted !default;
+$switch-disabled-opacity: 0.45 !default;
+
+$switch-off-color: $gray-400 !default;
+$switch-off-bg: rgba-to-hex($gray-100, $rgba-to-hex-bg) !default;
+$switch-off-border: rgba-to-hex($gray-100, $rgba-to-hex-bg) !default;
+$switch-holder-bg: $white !default;
+$switch-holder-shadow: $box-shadow-xs !default;
+$switch-focus-box-shadow: $input-btn-focus-box-shadow !default;
+
+// Avatars
+// *******************************************************************************
+
+$avatar-size-xl: 4rem !default;
+$avatar-size-lg: 3.5rem !default;
+$avatar-size-md: 3rem !default;
+$avatar-size: 2.5rem !default; // Default
+$avatar-size-sm: 2rem !default;
+$avatar-size-xs: 1.5rem !default;
+
+$avatar-initial-xl: 1.875rem !default;
+$avatar-initial-lg: 1.5rem !default;
+$avatar-initial-md: 1.125rem !default;
+$avatar-initial: $font-size-base !default;
+$avatar-initial-sm: 0.8125rem !default;
+$avatar-initial-xs: 0.625rem !default;
+
+$avatar-group-border: $card-bg !default;
+$avatar-bg: #eeedf0 !default; // (C)
+
+// Timeline
+// *******************************************************************************
+
+$timeline-border-color: $border-color !default;
+
+$timeline-indicator-size: 2rem !default;
+$timeline-point-size: 0.75rem !default;
+$timeline-point-color: $primary !default;
+$timeline-point-indicator-color: $primary !default;
+$timeline-end-indicator-font-size: 1.5rem !default;
+$timeline-item-min-height: 4rem !default;
+$timeline-item-padding-x: 0 !default;
+$timeline-item-padding-y: 0.5rem !default;
+$timeline-item-bg-color: $card-bg !default;
+$timeline-item-border-radius: $border-radius !default;
+
+$timeline-event-time-size: 0.85rem !default;
+$timeline-event-time-color: $text-muted !default;
+
+// Text Divider
+// *******************************************************************************
+$divider-color: $gray-200 !default;
+
+$divider-margin-y: 1rem !default;
+$divider-margin-x: 0 !default;
+
+$divider-text-padding-y: 0rem !default;
+$divider-text-padding-x: 1rem !default;
+
+$divider-font-size: $font-size-base !default;
+$divider-text-color: $headings-color !default;
+$divider-icon-size: 1.25rem !default;

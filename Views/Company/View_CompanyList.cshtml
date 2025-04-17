@@ -1,0 +1,38 @@
+﻿@{
+   
+}
+
+<div class="table-responsive text-nowrap">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Site</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.companyList)
+            {
+                <tr>
+                    <td>
+                        <span class="fw-medium">@item?.name</span>
+                    </td>
+                    <td>@item?.site</td>
+                    <td>
+                        <div class="dropdown">
+                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                <i class="ti ti-dots-vertical"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item waves-effect" href="javascript:void(0);" onclick="OnDeleteMember(@item?.id);"><i class="ti ti-trash me-1"></i> Delete</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+	
+

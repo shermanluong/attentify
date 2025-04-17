@@ -1,0 +1,58 @@
+﻿.hidden{
+    display: none!important;
+}
+
+.message-badge {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    padding-bottom: 1px;
+    min-width: 16px;
+    height: 1rem;
+    font-size: 12px;
+    top: -8px;
+    right: -2px;
+    color: black !important;
+    background-color: var(--Gold-Light);
+    border-radius: 9999px;
+    padding-left: .3rem;
+    padding-right: .3rem;
+}
+
+:root {
+    --Gray-Lightest: #fbfbfc;
+    --Gray-Lighter: #f1f2f4;
+    --Gray-Light: #e7e7ea;
+    --Gray-Mid: #a3a4af;
+    --Gray-Dark: #666771;
+    --Gray-Darker: #111327;
+    --Purple-Lightest: #f5ebfd;
+    --Purple-Light: #a25ccd;
+    --Purple-Mid: #5e1d86;
+    --Purple-Dark: #310e6a;
+    --Purple-Darker: #17043f;
+    --Blue-Lightest: #dbf8ff;
+    --Blue-Light: #3c9fd7;
+    --Blue-Mid: #1870a1;
+    --Blue-Dark: #0d436a;
+    --Green-Lightest: #caffdc;
+    --Green-Light: #09bc91;
+    --Green-Mid: #007b5e;
+    --Green-Dark: #02493d;
+    --Beige-Lightest: #fff4e7;
+    --Beige-Light: #d78a41;
+    --Beige-Mid: #9f5b1b;
+    --Beige-Dark: #6a3403;
+    --Red-Lightest: #ffe8e8;
+    --Red-Light: #e83939;
+    --Red-Mid: #af2525;
+    --Red-Dark: #951919;
+    --Gold-Lightest: #fff8ce;
+    --Gold-Light: #fae571;
+    --Gold-Mid: #efa63a;
+    --Gold-Dark: #ed6e3e;
+    --Gold-Primary: #ffcb56;
+    --Gold-Primary-Alt: #efa63a;
+    --White: #fff;
+    --Black: #000
+}

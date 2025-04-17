@@ -1,0 +1,35 @@
+// * Invoice Print
+// *******************************************************************************
+
+@import '../_bootstrap-extended/include';
+@import '../_custom-variables/pages';
+
+html,
+body {
+  background: $white !important;
+}
+
+body > :not(.invoice-print) {
+  display: none !important;
+}
+
+.invoice-print {
+  min-width: 768px !important;
+  font-size: 15px !important;
+
+  svg {
+    fill: $body-color !important;
+  }
+}
+
+.invoice-print * {
+  color: $body-color !important;
+}
+
+@if $enable-dark-style {
+  .dark-style {
+    .invoice-print th {
+      color: $white !important;
+    }
+  }
+}

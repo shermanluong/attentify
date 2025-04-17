@@ -1,0 +1,296 @@
+﻿@{
+    Layout = "_Layout";
+    ViewBag.title = "EmailDetail";
+}
+
+@try{
+    var orderCustomerInfo = ViewBag.orderCustomerInfo ?? null;
+    {
+        <div class="flex-grow-1 container-p-y container-fluid">
+            <div class="row">
+                <div class="col-7">
+
+                    <div class="card pb-5">
+                        <div class="card-header  d-flex justify-content-between align-items-center pb-0 ps-2">
+                            <div class="d-flex align-items-center overflow-hidden">
+                                <span class="ms-sm-2 me-4"><i class="ti ti-chevron-left ti-md cursor-pointer" data-bs-toggle="sidebar" data-target="#app-email-view" onclick="window.history.back();"></i></span>
+                                <h6 class="text-truncate mb-0 me-2 fw-normal">@ViewBag.emailExt.em_from</h6>
+                            </div>
+                        </div>
+                    </div>
+                    @for (int i = 0; i < ViewBag.emailList.Count - 1; i++)
+                    {
+                        <div class="card email-card mt-2">
+                            <div class="card-header d-flex justify-content-between flex-wrap border-bottom p-3" onclick="$('#@ViewBag.emailList[i].em_id').toggle('d-none');">
+                                <h6 class="mb-0">@ViewBag.emailList[i].em_subject</h6>
+                                <p class="text-muted mb-0 pt-1">@ViewBag.emailList[i].em_date</p>
+                            </div>
+                            <div class="card-body pt-5" style ="display : none;" id= "@ViewBag.emailList[i].em_id">
+                                <iframe srcdoc="@ViewBag.emailList[i].em_body" style="border: none; width: 100%; height: 500px"></iframe>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="card email-card mt-2">
+                        <div class="card-header d-flex justify-content-between flex-wrap border-bottom p-3">
+                            <h6 class="mb-0">@ViewBag.emailExt.em_subject</h6>
+                            <p class="text-muted mb-0 pt-1">@ViewBag.emailExt.em_date</p>
+                        </div>
+                        <div class="card-body pt-5">
+                            <iframe srcdoc="@ViewBag.emailExt.em_body" style="border: none; width: 100%; height: 500px"></iframe>
+                        </div>
+                    </div>
+
+                    <div class="email-reply card mt-4 mx-sm-6 mx-3 mb-4 me-0 ms-0">
+                        <h6 class="card-header border-0 fw-normal pb-4 ps-3">Reply to @ViewBag.emailExt.em_from</h6>
+                        <div class="card-body pt-0 ps-3">
+                            <div class="d-flex justify-content-start">
+                                <div class="email-reply-toolbar border-0 w-100 ps-0 pb-4">
+                                <span class="ql-formats me-0">
+                                    <button class="ql-bold"></button>
+                                    <button class="ql-italic"></button>
+                                    <button class="ql-underline"></button>
+                                    <button class="ql-list" value="ordered"></button>
+                                    <button class="ql-list" value="bullet"></button>
+                                    <button class="ql-link"></button>
+                                    <button class="ql-image"></button>
+                                </span>
+                                </div>
+                            </div>
+                            <div class="email-reply-editor">@ViewBag.replyMsg</div>
+                            <div class="d-flex justify-content-end align-items-center mt-4">
+                                <button id = "sendBtn" class="btn btn-primary">
+                                    <span class="align-middle">Send</span>
+                                    <i class="ti ti-send ti-16px ms-2 scaleX-n1-rtl"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="card mb-3">
+                        <h5 class="card-header pb-2">Customer Profile</h5>
+                        <div class="card-body">
+                            <p class="mb-1">Name :  @ViewBag.customerInfo.strName</p>
+                            <p class="mb-1">Phone : @ViewBag.customerInfo.strPhone</p>
+                            <p class="mb-1">Email : @ViewBag.customerInfo.strEmail</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="row g-6">
+                            <div class="card-header d-flex justify-content-between align-items-center pb-0 mt-0">
+                                <h5 class="card-header ps-4">Order Detail</h5>
+                                @if (orderCustomerInfo != null)
+                                {
+                                    <div class="">
+                                        <button type="button" class="btn btn-primary waves-effect waves-light" onclick="handleRefundClick('@ViewBag.orderId')">Refund</button>
+                                        <button type="button" class="btn btn-dark waves-effect waves-light" onclick="handleCancelClick('@ViewBag.orderId');">Cancel</button>
+                                    </div>
+                                    
+                                } 
+                            </div>
+                            @if (orderCustomerInfo != null)
+                            {
+                                <div class="col-7 mt-0">
+                                    <div class="card shadow-none bg-transparent border border-secondary ms-6 mb-2">
+                                        <div class="card-body">
+                                            <h5 class="card-title mb-1">@ViewBag.orderName @ViewBag.financial_status @ViewBag.fulfillment_status</h5>
+                                            <h8 class="card-subtitle mb-1 ">@ViewBag.closed_at</h8>
+                                            <h6 class="mb-1">Delivery Method</h6>
+                                            <p>@ViewBag.deliveryMethod</p>
+                                            <h6>
+                                                @ViewBag.lineName
+                                            </h6>
+                                            <p>SKU: @ViewBag.sku</p>
+                                            <div class="row">
+                                                <p class="col">$@ViewBag.total_line_items_price</p>
+                                                <p class="col">$@ViewBag.total_line_items_price × 1</p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="card shadow-none bg-transparent border border-secondary ms-6 mb-2">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <p class="col">Subtotal</p>
+                                                <p class="col">1item</p>
+                                                <p class="col">$@ViewBag.total_line_items_price</p>
+                                            </div>
+                                            <div class="row">
+                                                <p class="col">Discount</p>
+                                                <p class="col"></p>
+                                                <p class="col">-$@ViewBag.current_total_discounts</p>
+                                            </div>
+                                            <div class="row">
+                                                <p class="col">Shipping</p>
+                                                <p class="col">@ViewBag.deliveryMethod</p>
+                                                <p class="col">$@ViewBag.total_shipping_price_amount</p>
+                                            </div>
+                                            <div class="row">
+                                                <p class="col">Total</p>
+                                                <p class="col"></p>
+                                                <p class="col">$@ViewBag.current_total_price</p>
+                                            </div>
+                                            <div class="row">
+                                                <p class="col">@ViewBag.financial_status</p>
+                                                <p class="col"></p>
+                                                <p class="col">$@ViewBag.current_total_price</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-5 mt-0">
+                                    <div class="card shadow-none bg-transparent border border-secondary me-2 mb-2">
+                                        <div class="card-body">
+                                            <h5>Customer</h5>
+                                            <p>@ViewBag.orderCustomerInfo.FirstName @ViewBag.orderCustomerInfo.LastName</p>
+                                            <h5>Contact Information</h5>
+                                            <p>@ViewBag.orderCustomerInfo.Email</p>
+                                            <p>@ViewBag.orderCustomerInfo.Phone</p>
+                                            <h5>Shipping Address</h5>
+                                            <p>@ViewBag.orderCustomerInfo.shippingAddress</p>
+                                            <h5>Billing Address</h5>
+                                            <p>Same as shipping address</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            } else
+                            {
+                                <div class="card-body mt-0 ms-5">
+                                    There is no order information available.
+                                </div>
+                            }
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <input type="hidden" name="strFromEmail"   value="@ViewBag.emailExt.em_from" />
+        <input type="hidden" name="strToEmail"     value="@ViewBag.strToEmail" />
+        <!-- Email Page JS -->
+        <script src="~/assets/js/app-email.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#sendBtn").on('click', () => {
+                    const strToEmail  = $('input[name="strFromEmail"]').val();
+                    const strFromEmail = $('input[name="strToEmail"]').val();
+                    const strBody = $('.email-reply-editor').find("p:first").text();
+
+                    console.log("ToEmail : " + strToEmail);
+                    console.log("FromEmail : " + strFromEmail);
+                    console.log("Body : " + strBody);
+                    $.post('/email/sendEmail', { strTo: strToEmail, strFrom : strFromEmail, strBody: strBody }, function (data) {
+                        if ( data.status == 200) {
+                            OnOpenToast("success", data.message);
+                        } else {
+                            OnOpenToast("error", data.message);
+                        }
+                    }, 'json')
+                })
+
+                email.init();
+            });
+
+            function handleRefundClick(orderId) {
+                const swalWithBootstrapButtons = Swal.mixin({
+                    customClass: {
+                        confirmButton: "btn btn-success",
+                        cancelButton: "btn btn-danger"
+                    },
+                    buttonsStyling: false
+                })
+                swalWithBootstrapButtons.fire({
+                    title: "Question",
+                    text: "Should you process the refund request?",
+                    icon: "question",
+                    showCancelButton: true,
+                    confirmButtonText: "Yes, I'll do it!",
+                    cancelButtonText: "No, I won't!",
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.onmouseenter = Swal.stopTimer;
+                                toast.onmouseleave = Swal.resumeTimer;
+                            },
+                            didClose: () => {
+                            }
+                        });
+                        $.post('/email/RequestShopify', { orderId: orderId, type: 3, em_idx: 0 }, function (resp) {
+                            if (resp.status == 201) {
+                                Toast.fire({
+                                    icon: "success",
+                                    title: "The refund request was successful."
+                                });
+                            } else {
+                                Toast.fire({
+                                    icon: "error",
+                                    title: "The refund request failed."
+                                });
+                            }
+                        }, 'json');
+                    }
+                });
+            }
+
+            function handleCancelClick (orderId) {
+                const swalWithBootstrapButtons = Swal.mixin({
+                    customClass: {
+                        confirmButton: "btn btn-success",
+                        cancelButton: "btn btn-danger"
+                    },
+                    buttonsStyling: false
+                })
+                swalWithBootstrapButtons.fire({
+                    title: "Question",
+                    text: "Should you process the cancellation request?",
+                    icon: "question",
+                    showCancelButton: true,
+                    confirmButtonText: "Yes, I'll do it!",
+                    cancelButtonText: "No, I won't!",
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.onmouseenter = Swal.stopTimer;
+                                toast.onmouseleave = Swal.resumeTimer;
+                            },
+                            didClose: () => {
+                            }
+                        });
+                        $.post('/email/RequestShopify', { orderId: orderId, type: 2, em_idx: 0 }, function (resp) {
+                            if (resp.status == 201) {
+                                Toast.fire({
+                                    icon: "success",
+                                    title: "The cacellation request was successful."
+                                });
+                            } else {
+                                Toast.fire({
+                                    icon: "error",
+                                    title: "The cacellation request failed."
+                                });
+                            }
+                        }, 'json');
+                    }
+                });
+            }
+        </script>
+    }
+}catch(Exception ex){
+    Console.WriteLine("dashbaord" + ex.Message);
+}

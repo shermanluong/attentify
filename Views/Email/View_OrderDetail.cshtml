@@ -1,0 +1,82 @@
+﻿@{
+	if (ViewBag.status == 201 )
+	{
+        <div class="row">
+            <h5 class="card-header col ms-2">Order Detail</h5>
+            <div class="text-end mt-5 me-2 mb-2 col">
+                <button type="button" class="btn btn-primary waves-effect waves-light">Refund</button>
+                <button type="button" class="btn btn-dark waves-effect waves-light">Cancel</button>
+            </div>
+        </div>
+        <div>
+            <div class="row g-6">
+                <div class="col-lg-7">
+                    <div class="card shadow-none bg-transparent border border-secondary ms-6 mb-2">
+                        <div class="card-body">
+                            <h5 class="card-title mb-1">#CA40226 paid Unfulfilled</h5>
+                            <h8 class="card-subtitle mb-1 ">January 7, 2025 at 2:00:49 PM</h8>
+                            <h6 class="mb-1">Delivery Method</h6>
+                            <p>First Class Shipping</p>
+                            <h6>
+                                iPhone 16 Waterproof IP68 Case, Punkcase [Pink] [StudStar Series] [Slim Fit] [Dirtproof] - Pink.
+                            </h6>
+                            <p>SKU: PUNK-i16-STUD-G532</p>
+                            <div class="row">
+                                <p class="col">$43.98</p> <p class="col">$43.98 × 1</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card shadow-none bg-transparent border border-secondary ms-6 mb-2">
+                        <div class="card-body">
+                            <div class="row">
+                                <p class="col">Subtotal</p>
+                                <p class="col">1item</p>
+                                <p class="col">$43.98</p>
+                            </div>
+                            <div class="row">
+                                <p class="col">Shipping</p>
+                                <p class="col">First Class Shipping</p>
+                                <p class="col">$1.99</p>
+                            </div>
+                            <div class="row">
+                                <p class="col">Total</p>
+                                <p class="col"></p>
+                                <p class="col">$45.97</p>
+                            </div>
+                            <div class="row">
+                                <p class="col">Paid</p>
+                                <p class="col"></p>
+                                <p class="col">$45.97</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="card shadow-none bg-transparent border border-secondary me-2 mb-2">
+                        <div class="card-body">
+                            <h5>Customer</h5>
+                            <p>AuraRempel</p>
+                            <h5>Contact Information</h5>
+                            <p>aura.905@hotmail.com</p>
+                            <p>No phone number</p>
+                            <h5>Shipping Address</h5>
+                            <p>Aura Rempel</p>
+                            <p>487 caithness st E</p>
+                            <p>Caledonia ON N3W 1E3</p>
+                            <p>Canada</p>
+                            <h5>Billing Address</h5>
+                            <p>Same as shipping address</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    } else if ( ViewBag.status == -201)
+    {
+        <h5 class="card-header pb-2">Order Detail</h5>
+        <div class="card-body">
+            <p class="mb-1">There is no order information available.</p>
+        </div>
+    }
+}

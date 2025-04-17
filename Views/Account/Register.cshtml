@@ -1,0 +1,332 @@
+@{
+    Layout = null;
+}
+<!doctype html>
+
+<html
+  lang="en"
+  class="light-style layout-wide customizer-hide"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="/assets/"
+  data-template="vertical-menu-template"
+  data-style="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title> Register </title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="~/assets/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&ampdisplay=swap"
+      rel="stylesheet" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="~/assets/vendor/fonts/fontawesome.css" />
+    <link rel="stylesheet" href="~/assets/vendor/fonts/tabler-icons.css" />
+    <link rel="stylesheet" href="~/assets/vendor/fonts/flag-icons.css" />
+
+    <!-- Core CSS -->
+
+    <link rel="stylesheet" href="~/assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="~/assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
+
+    <link rel="stylesheet" href="~/assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="~/assets/vendor/libs/node-waves/node-waves.css" />
+
+    <link rel="stylesheet" href="~/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="~/assets/vendor/libs/typeahead-js/typeahead.css" />
+    <!-- Vendor -->
+    <link rel="stylesheet" href="~/assets/vendor/libs/form-validation/form-validation.css" />
+
+    <!-- Page CSS -->
+    <!-- Page -->
+    <link rel="stylesheet" href="~/assets/vendor/css/pages/page-auth.css" />
+
+    <!-- Helpers -->
+    <script src="~/assets/vendor/js/helpers.js"></script>
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+
+    <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
+    <script src="~/assets/vendor/js/template-customizer.js"></script>
+
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="~/assets/js/config.js"></script>
+    <script src="~/assets/js/jquery-3.7.1.min.js"></script>
+</head>
+
+  <body>
+    <!-- Content -->
+
+    <div class="container-xxl">
+      <div class="authentication-wrapper authentication-basic container-p-y">
+        <div class="authentication-inner py-6">
+          <!-- Register Card -->
+          <div class="card">
+            <div class="card-body">
+                <!-- Logo -->
+                <div class="app-brand justify-content-center mb-6">
+                    <a href="/" class="app-brand-link">
+                        <span style="box-sizing: border-box; display: block; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;">
+                            <img alt="" aria-hidden="true"
+                                    src="~/img/logo.png"
+                                    style="display: block; max-width: 80%; width: 50px; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;">
+                        </span>
+                        <span class="app-brand-text demo text-heading fw-bold">Attentify</span>
+                    </a>
+                </div>
+                <!-- /Logo -->
+                <div class="alert alert-primary" role="alert" style="display: none"></div>
+
+              <form id="registerForm" class="mb-6">
+                <div class="mb-6">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="text" 
+                    class="form-control" 
+                    id="Email" 
+                    name="Email" 
+                    placeholder="Enter your email"/>
+                </div>
+                <div class="mb-6 form-password-toggle">
+                  <label class="form-label" for="password">Password</label>
+                  <div class="input-group input-group-merge">
+                    <input
+                      type="password"
+                      id="Password"
+                      class="form-control"
+                      name="Password"
+                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                      aria-describedby="password"/>
+                    <span class="input-group-text cursor-pointer"><i class="ti ti-eye-off"></i></span>
+                  </div>
+                  <div class="demo-vertical-spacing">
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="my-8">
+                  <div class="form-check mb-0 ms-2">
+                    <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms"/>
+                    <label class="form-check-label" for="terms-conditions">
+                      I agree to
+                      <a href="javascript:void(0);">privacy policy & terms</a>
+                    </label>
+                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                  </div>
+                </div>
+                <button id="submitbutton" class="btn btn-primary d-grid w-100">Sign up</button>
+              </form>
+
+              <p class="text-center">
+                <span>Already have an account?</span>
+                <a href="~/Account/Login">
+                  <span>Sign in instead</span>
+                </a>
+              </p>
+
+              <div class="divider my-6">
+                <div class="divider-text">or</div>
+              </div>
+
+              <div class="d-flex justify-content-center">
+                <a href="javascript:;" class="btn btn-sm btn-icon rounded-pill btn-text-facebook me-1_5">
+                  <i class="tf-icons ti ti-brand-facebook-filled"></i>
+                </a>
+
+                <a href="javascript:;" class="btn btn-sm btn-icon rounded-pill btn-text-twitter me-1_5">
+                  <i class="tf-icons ti ti-brand-twitter-filled"></i>
+                </a>
+
+                <a href="javascript:;" class="btn btn-sm btn-icon rounded-pill btn-text-github me-1_5">
+                  <i class="tf-icons ti ti-brand-github-filled"></i>
+                </a>
+
+                <a href="~/Account/GoogleLogin" class="btn btn-sm btn-icon rounded-pill btn-text-google-plus">
+                  <i class="tf-icons ti ti-brand-google-filled"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Register Card -->
+        </div>
+      </div>
+    </div>
+
+    <!-- / Content -->
+
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+
+    <script src="~/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="~/assets/vendor/libs/popper/popper.js"></script>
+    <script src="~/assets/vendor/js/bootstrap.js"></script>
+    <script src="~/assets/vendor/libs/node-waves/node-waves.js"></script>
+    <script src="~/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="~/assets/vendor/libs/hammer/hammer.js"></script>
+    <script src="~/assets/vendor/libs/i18n/i18n.js"></script>
+    <script src="~/assets/vendor/libs/typeahead-js/typeahead.js"></script>
+    <script src="~/assets/vendor/js/menu.js"></script>
+
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+    <script src="~/assets/vendor/libs/form-validation/popular.js"></script>
+    <script src="~/assets/vendor/libs/form-validation/bootstrap5.js"></script>
+    <script src="~/assets/vendor/libs/form-validation/auto-focus.js"></script>
+
+    <!-- Main JS -->
+    <script src="~/assets/js/main.js"></script>
+
+    <!-- Page JS -->
+    <script src="~/assets/js/pages-auth.js"></script>
+  </body>
+</html>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var percentage = 0;
+        $("#Password").keyup(function () {
+            var m = $(this).val();
+            var n = m.length;
+
+            // Function for checking
+            check(n, m);
+        });
+
+        function check(n, m) {
+            if (n < 6) {
+                percentage = 0;
+                $(".progress-bar").css("background", "#dd4b39");
+            } else if (n < 8) {
+                percentage = 20;
+                $(".progress-bar").css("background", "#9c27b0");
+            } else if (n < 10) {
+                percentage = 40;
+                $(".progress-bar").css("background", "#ff9800");
+            } else {
+                percentage = 60;
+                $(".progress-bar").css("background", "#4caf50");
+            }
+
+            if ((m.match(/[a-z]/) != null)) {
+                percentage += 10;
+            }
+
+            if ((m.match(/[A-Z]/) != null)) {
+                percentage += 10;
+            }
+
+            if ((m.match(/0|1|2|3|4|5|6|7|8|9/) != null)) {
+                percentage += 10;
+            }
+
+            if ((m.match(/\W/) != null) && (m.match(/\D/) != null)) {
+                percentage += 10;
+            }
+
+            $(".progress-bar").css("width", percentage + "%");
+        }
+
+        const registerForm = document.querySelector('#registerForm');
+        const fv = FormValidation.formValidation(registerForm, {
+            fields: {
+                Email: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please enter your email'
+                        },
+                        emailAddress: {
+                            message: 'Please enter valid email address'
+                        }
+                    }
+                },
+                Password: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please enter your password'
+                        },
+                        callback: {
+                            message: 'Password is too weak. Make it stronger!',
+                            callback: function () {
+                                return percentage >= 90;
+                            }
+                        }
+                    }
+                },
+                terms: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please agree terms & conditions'
+                        }
+                    }
+                }
+            },
+            plugins: {
+                trigger: new FormValidation.plugins.Trigger(),
+                bootstrap5: new FormValidation.plugins.Bootstrap5({
+                    eleValidClass: '',
+                    rowSelector: '.mb-6'
+                }),
+                submitButton: new FormValidation.plugins.SubmitButton(),
+                autoFocus: new FormValidation.plugins.AutoFocus()
+            },
+            init: instance => {
+                instance.on('plugins.message.placed', function (e) {
+                    if (e.element.parentElement.classList.contains('input-group')) {
+                        e.element.parentElement.insertAdjacentElement('afterend', e.messageElement);
+                    }
+                });
+            }
+        });
+
+        $("#registerForm").on("submit", function (event) {
+            event.preventDefault();
+            
+            fv.validate().then(function (status) {
+                if (status == "Valid") {
+                    var username = $("#Email").val();
+                    var password = $("#Password").val();
+
+                    $.ajax({
+                        url: '/Account/Register',
+                        type: 'POST',
+                        data: { Email: username, Password: password },
+                        dataType: 'json', 
+                        success: function (response) {
+                            console.log(response);
+                            if (response.status == 201) {
+                                $(".alert").html("Register successfully!")
+                                $(".alert").removeClass().addClass("alert alert-success");
+                                $(".alert").show();
+                                setTimeout(() => { window.location.href = response.redirectUrl; }, 1000)
+                            } else {
+                                $(".alert").html(response.description);
+                                $(".alert").removeClass().addClass("alert alert-warning");
+                                $(".alert").show();
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            $(".alert").html("An error occured! Please try again later!")
+                            $(".alert").removeClass().addClass("alert alert-danger");
+                            $(".alert").show();
+                        }
+                    });
+                }
+            });
+        });
+    });
+</script>

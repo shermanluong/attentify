@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "_Layout";
+    ViewBag.title = "Dashboard";
+}
+
+@try{
+    <div class="flex-grow-1 container-p-y container-xxl">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Account Plan: @ViewBag?.planName</h5>
+                <p class="card-text">
+                    Expire Time: @ViewBag?.expireDate
+                </p>
+            </div>
+        </div>
+    </div>
+}catch(Exception ex){
+    Console.WriteLine("dashbaord" + ex.Message);
+}

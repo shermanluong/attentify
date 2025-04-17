@@ -1,0 +1,358 @@
+﻿@{
+    Layout = "_Layout";
+    ViewBag.title = "Sms";
+}
+
+@try
+{
+    <div class="flex-grow-1 container-p-y container-fluid">
+        <div class="app-chat card overflow-hidden">
+            <div class="row g-0">
+                <!-- Sidebar Left -->
+                <div class="col app-chat-sidebar-left app-sidebar overflow-hidden" id="app-chat-sidebar-left">
+                    <div class="chat-sidebar-left-user sidebar-header d-flex flex-column justify-content-center align-items-center flex-wrap px-6 pt-12">
+                        <div class="avatar avatar-xl avatar-online chat-sidebar-avatar">
+                            <img src="~/assets/img/avatars/1.png" alt="Avatar" class="rounded-circle" />
+                        </div>
+                        <h5 class="mt-4 mb-0">John Doe</h5>
+                        <span>Admin</span>
+                        <i class="ti ti-x ti-lg cursor-pointer close-sidebar"
+                           data-bs-toggle="sidebar"
+                           data-overlay
+                           data-target="#app-chat-sidebar-left"></i>
+                    </div>
+                    <div class="sidebar-body px-6 pb-6">
+                        <div class="my-6">
+                            <label for="chat-sidebar-left-user-about" class="text-uppercase text-muted mb-1">About</label>
+                            <textarea id="chat-sidebar-left-user-about"
+                                      class="form-control chat-sidebar-left-user-about"
+                                      rows="3"
+                                      maxlength="120">
+    Hey there, we’re just writing to let you know that you’ve been subscribed to a repository on GitHub.</textarea>
+                        </div>
+                        <div class="my-6">
+                            <p class="text-uppercase text-muted mb-1">Status</p>
+                            <div class="d-grid gap-2 pt-2 text-heading ms-2">
+                                <div class="form-check form-check-success">
+                                    <input name="chat-user-status"
+                                           class="form-check-input"
+                                           type="radio"
+                                           value="active"
+                                           id="user-active"
+                                           checked />
+                                    <label class="form-check-label" for="user-active">Online</label>
+                                </div>
+                                <div class="form-check form-check-warning">
+                                    <input name="chat-user-status"
+                                           class="form-check-input"
+                                           type="radio"
+                                           value="away"
+                                           id="user-away" />
+                                    <label class="form-check-label" for="user-away">Away</label>
+                                </div>
+                                <div class="form-check form-check-danger">
+                                    <input name="chat-user-status"
+                                           class="form-check-input"
+                                           type="radio"
+                                           value="busy"
+                                           id="user-busy" />
+                                    <label class="form-check-label" for="user-busy">Do not Disturb</label>
+                                </div>
+                                <div class="form-check form-check-secondary">
+                                    <input name="chat-user-status"
+                                           class="form-check-input"
+                                           type="radio"
+                                           value="offline"
+                                           id="user-offline" />
+                                    <label class="form-check-label" for="user-offline">Offline</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="my-6">
+                            <p class="text-uppercase text-muted mb-1">Settings</p>
+                            <ul class="list-unstyled d-grid gap-4 ms-2 pt-2 text-heading">
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <i class="ti ti-lock ti-md me-1"></i>
+                                        <span class="align-middle">Two-step Verification</span>
+                                    </div>
+                                    <div class="form-check form-switch mb-0 me-1">
+                                        <input type="checkbox" class="form-check-input" checked />
+                                    </div>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <i class="ti ti-bell ti-md me-1"></i>
+                                        <span class="align-middle">Notification</span>
+                                    </div>
+                                    <div class="form-check form-switch mb-0 me-1">
+                                        <input type="checkbox" class="form-check-input" />
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="ti ti-user-plus ti-md me-1"></i>
+                                    <span class="align-middle">Invite Friends</span>
+                                </li>
+                                <li>
+                                    <i class="ti ti-trash ti-md me-1"></i>
+                                    <span class="align-middle">Delete Account</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="d-flex mt-6">
+                            <button class="btn btn-primary w-100"
+                                    data-bs-toggle="sidebar"
+                                    data-overlay
+                                    data-target="#app-chat-sidebar-left">
+                                Logout<i class="ti ti-logout ti-16px ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Sidebar Left-->
+                <!-- Chat & Contacts -->
+                <div class="col app-chat-contacts app-sidebar flex-grow-0 overflow-hidden border-end"
+                     id="app-chat-contacts">
+                    <div class="sidebar-header h-px-75 px-5 border-bottom d-flex align-items-center">
+                        <div class="d-flex align-items-center me-6 me-lg-0">
+                            <div class="flex-grow-1 input-group input-group-merge">
+                                <span class="input-group-text" id="basic-addon-search31"><i class="ti ti-search"></i></span>
+                                <input type="text"
+                                       class="form-control chat-search-input"
+                                       placeholder="Search..."
+                                       aria-label="Search..."
+                                       aria-describedby="basic-addon-search31" />
+                            </div>
+                        </div>
+                        <i class="ti ti-x ti-lg cursor-pointer position-absolute top-50 end-0 translate-middle d-lg-none d-block"
+                           data-overlay
+                           data-bs-toggle="sidebar"
+                           data-target="#app-chat-contacts"></i>
+                    </div>
+                    <div class="sidebar-body" id="chat_list">
+                        <!-- Chats -->
+                        <!-- /Chats -->
+                    </div>
+                </div>
+                <!-- /Chat contacts -->
+                <!-- Chat History -->
+                <div class="col app-chat-history">
+                    <div class="chat-history-wrapper">
+                        <div class="chat-history-header border-bottom">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex overflow-hidden align-items-center">
+                                    <i class="ti ti-menu-2 ti-lg cursor-pointer d-lg-none d-block me-4"
+                                       data-bs-toggle="sidebar"
+                                       data-overlay
+                                       data-target="#app-chat-contacts"></i>
+                                    <div class="chat-contact-info flex-grow-1">
+                                        <h6 class="m-0 fw-normal" id="selected_phone_number"></h6>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <i class="ti ti-phone ti-md cursor-pointer d-sm-inline-flex d-none me-1 btn btn-sm btn-text-secondary text-secondary btn-icon rounded-pill"></i>
+                                    <i class="ti ti-video ti-md cursor-pointer d-sm-inline-flex d-none me-1 btn btn-sm btn-text-secondary text-secondary btn-icon rounded-pill"></i>
+                                    <i class="ti ti-search ti-md cursor-pointer d-sm-inline-flex d-none me-1 btn btn-sm btn-text-secondary text-secondary btn-icon rounded-pill"></i>
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm btn-icon btn-text-secondary text-secondary rounded-pill dropdown-toggle hide-arrow"
+                                                data-bs-toggle="dropdown"
+                                                aria-expanded="true"
+                                                id="chat-header-actions">
+                                            <i class="ti ti-dots-vertical ti-md"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="chat-header-actions">
+                                            <a class="dropdown-item" href="javascript:void(0);">View Contact</a>
+                                            <a class="dropdown-item" href="javascript:void(0);">Mute Notifications</a>
+                                            <a class="dropdown-item" href="javascript:void(0);">Block Contact</a>
+                                            <a class="dropdown-item" href="javascript:void(0);">Clear Chat</a>
+                                            <a class="dropdown-item" href="javascript:void(0);">Report</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat-history-body" >
+                            <ul class="list-unstyled chat-history" id="chat_history">
+                            </ul>
+                        </div>
+                        <!-- Chat message form -->
+                        <div class="chat-history-footer shadow-xs">
+                            <form class="form-send-message d-flex justify-content-between align-items-center">
+                                <input id = "strMessage" class="form-control message-input border-0 me-4 shadow-none"
+                                       placeholder="Type your message here..." />
+                                <div class="message-actions d-flex align-items-center">
+                                    <i class="speech-to-text ti ti-microphone ti-md btn btn-sm btn-text-secondary btn-icon rounded-pill cursor-pointer text-heading"></i>
+                                    <label for="attach-doc" class="form-label mb-0">
+                                        <i class="ti ti-paperclip ti-md cursor-pointer btn btn-sm btn-text-secondary btn-icon rounded-pill mx-1 text-heading"></i>
+                                        <input type="file" id="attach-doc" hidden />
+                                    </label>
+                                    <button id ="sendButton" class="btn btn-primary d-flex send-msg-btn">
+                                        <span class="align-middle d-md-inline-block d-none">Send</span>
+                                        <i class="ti ti-send ti-16px ms-md-2 ms-0"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                     </div>
+                </div>
+                <!-- /Chat History -->
+                <!-- Sidebar Right -->
+                <div class="col app-chat-sidebar-right app-sidebar overflow-hidden" id="app-chat-sidebar-right">
+                    <div class="sidebar-header d-flex flex-column justify-content-center align-items-center flex-wrap px-6 pt-12">
+                        <div class="avatar avatar-xl avatar-online chat-sidebar-avatar">
+                            <img src="~/assets/img/avatars/4.png" alt="Avatar" class="rounded-circle" />
+                        </div>
+                        <h5 class="mt-4 mb-0">Felecia Rower</h5>
+                        <span>NextJS Developer</span>
+                        <i class="ti ti-x ti-lg cursor-pointer close-sidebar d-block"
+                           data-bs-toggle="sidebar"
+                           data-overlay
+                           data-target="#app-chat-sidebar-right"></i>
+                    </div>
+                    <div class="sidebar-body p-6 pt-0">
+                        <div class="my-6">
+                            <p class="text-uppercase mb-1 text-muted">About</p>
+                            <p class="mb-0">
+                                It is a long established fact that a reader will be distracted by the readable content .
+                            </p>
+                        </div>
+                        <div class="my-6">
+                            <p class="text-uppercase mb-1 text-muted">Personal Information</p>
+                            <ul class="list-unstyled d-grid gap-4 mb-0 ms-2 py-2 text-heading">
+                                <li class="d-flex align-items-center">
+                                    <i class="ti ti-mail ti-md"></i>
+                                    <span class="align-middle ms-2">josephGreen@email.com</span>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <i class="ti ti-phone-call ti-md"></i>
+                                    <span class="align-middle ms-2">+1(123) 456 - 7890</span>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <i class="ti ti-clock ti-md"></i>
+                                    <span class="align-middle ms-2">Mon - Fri 10AM - 8PM</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="my-6">
+                            <p class="text-uppercase text-muted mb-1">Options</p>
+                            <ul class="list-unstyled d-grid gap-4 ms-2 py-2 text-heading">
+                                <li class="cursor-pointer d-flex align-items-center">
+                                    <i class="ti ti-badge ti-md"></i>
+                                    <span class="align-middle ms-2">Add Tag</span>
+                                </li>
+                                <li class="cursor-pointer d-flex align-items-center">
+                                    <i class="ti ti-star ti-md"></i>
+                                    <span class="align-middle ms-2">Important Contact</span>
+                                </li>
+                                <li class="cursor-pointer d-flex align-items-center">
+                                    <i class="ti ti-photo ti-md"></i>
+                                    <span class="align-middle ms-2">Shared Media</span>
+                                </li>
+                                <li class="cursor-pointer d-flex align-items-center">
+                                    <i class="ti ti-trash ti-md"></i>
+                                    <span class="align-middle ms-2">Delete Contact</span>
+                                </li>
+                                <li class="cursor-pointer d-flex align-items-center">
+                                    <i class="ti ti-ban ti-md"></i>
+                                    <span class="align-middle ms-2">Block Contact</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="d-flex mt-6">
+                            <button class="btn btn-danger w-100"
+                                    data-bs-toggle="sidebar"
+                                    data-overlay
+                                    data-target="#app-chat-sidebar-right">
+                                Delete Contact<i class="ti ti-trash ti-16px ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Sidebar Right -->
+
+                <div class="app-overlay"></div>
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" name="strMyPhone"   value="@(ViewBag.strMyPhone ?? "")" />
+    <input type="hidden" name="strClientPhone" value="" />
+
+    <!-- Chat Page JS -->
+    <script src="~/assets/js/app-chat.js"></script>
+
+    <script type="text/javascript">
+        let chatContactListItems = [];
+
+        $(document).ready(function () {
+            loadSmsList();
+
+            $("#sendButton").on('click', () => {
+                const strMyPhone    = $('input[name="strMyPhone"]').val();
+                const strClientPhone = $('input[name="strClientPhone"]').val();
+                const strMessage    = $('#strMessage').val();
+
+                console.log("strMyPhone " + strMyPhone);
+                console.log("strClientPhone " + strClientPhone);
+                console.log("strMessage " + strMessage);
+
+                $.post('/sms/sendSms', { strToPhone: strClientPhone, strFromPhone: strMyPhone, strSms: strMessage }, (res) => {
+                    console.log(res.message);
+                }, 'json')
+            })
+        });
+
+        function loadSmsList() {
+            const strMyPhone = $('input[name="strMyPhone"]').val();
+            console.log(strMyPhone);
+
+            $.post('/sms/GetSmsList', { strToPhone : strMyPhone }, function (data) {
+                try {
+                    $('#chat_list').html(data);
+                    initChatList();
+                } catch (e) {
+                    console.log(e);
+                } finally {
+                }
+            }, 'html');
+        }
+
+        function loadSmsHistory( strClientPhone, strMyPhone ) {
+            $.post('/sms/GetSmsHistory', { strFromPhone: strClientPhone, strToPhone: strMyPhone }, function (data) {
+                try {
+                    $('#chat_history').html(data);
+                } catch (e) {
+                    console.log(e);
+                } finally {
+                }
+            }, 'html');
+        }
+
+        function initChatList() {
+            chatContactListItems = [].slice.call(
+                $('.chat-contact-list-item:not(.chat-contact-list-item-title)')
+            );
+
+            chatContactListItems.forEach(chatContactListItem => {
+                chatContactListItem.addEventListener('click', e => {
+                    chatContactListItems.forEach(chatContactListItem => {
+                        chatContactListItem.classList.remove('active');
+                    });
+                    e.currentTarget.classList.add('active');
+                });
+            });
+        }
+
+        function handleChatList(strClientPhone) {
+            $('input[name="strClientPhone"]').val(strClientPhone);
+            let strMyPhone = $('input[name="strMyPhone"]').val();
+            $('#selected_phone_number').html(strClientPhone);
+            loadSmsHistory(strClientPhone, strMyPhone);
+        }
+
+    </script>
+}
+catch (Exception ex)
+{
+    Console.WriteLine("Sms" + ex.Message);
+}

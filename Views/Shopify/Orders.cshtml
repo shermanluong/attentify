@@ -1,0 +1,43 @@
+﻿@using GoogleLogin.Services;
+@{
+    Layout = "_Layout";
+    ViewBag.title = "Orders";
+}
+<style>
+
+</style>
+<div class="row page-titles mx-0">
+    <div class="col p-md-0">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Orders</a></li>
+        </ol>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h4 style="display: inline-block">Orders: @ViewBag.Store</h4>
+                        <span style="float:right"><a href="javascript:void(0)" class="refresh-order" data-store="@ViewBag.Store"><i class="fa fa-refresh"></i></a></span>
+                    </div>
+                    <div class="order-table-wrapper">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+</div>*@
+@*<div id="spinner" class="spinner d-none"></div>*@
+@*
+<form action="/shopify/orders?store=@ViewBag.Store" type="get" id="shopify_form">
+    <input type="hidden" value="@ViewBag.PageNo" name="nPageNo" />
+    <input type="hidden" value="@ViewBag.PageCnt" id="PageCnt" />
+    <input type="hidden" value="@ViewBag.Store" name="store" />
+</form>*@
+<input type="hidden" value="@ViewBag.Store" name="store" />

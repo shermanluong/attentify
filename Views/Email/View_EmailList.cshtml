@@ -1,0 +1,42 @@
+﻿@{
+    if (ViewBag.Emails.Count != 0)
+	{
+        @foreach (var item in ViewBag.Emails)
+        {
+            <li class="email-list-item pt-0 pb-0  min-h-2 @(item.em_read == 1 ? "email-marked-read" : "") d-flex align-items-center"
+                data-starred="true"
+                data-bs-toggle="sidebar"
+                data-target="#app-email-view">
+                <div class="d-flex align-items-center w-100">
+                    <div class="form-check mb-0 ms-2">
+                        <input class="email-list-item-input form-check-input" type="checkbox" id="@item.em_id" />
+                        <label class="form-check-label" for="@item.em_id"></label>
+                    </div>
+                    <span class="ms-sm-3 me-4 d-sm-inline-block d-none">
+                        <i class="email-list-item-bookmark ti ti-star ti-md cursor-pointer"></i>
+                    </span>
+                    <div class="email-list-item-content ms-2 ms-sm-0 me-2" onclick="javascript:loadMailDetail('@item.em_id');">
+                        <span class="email-list-item-username me-2 text-heading">@item.em_from</span>
+                        <small class="email-list-item-subject d-xl-inline-block d-block">
+                            @item.em_subject
+                        </small>
+                    </div>
+                    <div class="email-list-item-meta ms-auto d-flex align-items-center">
+                        <small class="email-list-item-time text-muted">@item.em_date_ex</small>
+                        <ul class="list-inline email-list-item-actions">
+                            <li class="list-inline-item email-read btn btn-icon btn-text-secondary rounded-pill">
+                                <i class="ti ti-mail ti-md"></i>
+                            </li>
+                            <li class="list-inline-item email-delete btn btn-icon btn-text-secondary rounded-pill">
+                                <i class="ti ti-trash ti-md"></i>
+                            </li>
+                            <li class="list-inline-item btn btn-icon btn-text-secondary rounded-pill">
+                                <i class="ti ti-info-circle ti-md"></i>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+        }
+	}
+}

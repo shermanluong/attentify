@@ -1,0 +1,127 @@
+﻿@{
+    Layout = "_Layout";
+    ViewBag.title = "MailManage";
+}
+
+@try
+{
+    <div class="flex-grow-1 container-p-y container-fluid">
+        <div class="card">
+            <div class="row">
+                <h5 class="card-header ms-5 col">Mail Account Table</h5>
+                <div class="text-end mt-5 me-10 col">
+                    <button class="btn btn-secondary create-new btn-primary waves-effect waves-light" type="button" onclick="handleOpenModal();">
+                        <span>
+                            <i class="ti ti-plus me-sm-1"></i> 
+                            <span class="d-none d-sm-inline-block">Add</span>
+                        </span>
+                     </button>
+                    <div class="modal fade" id="modalCenter" tabindex="-1" style="display: none;" aria-modal="true" role="dialog">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalCenterTitle">New Mail</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="handleOpenModal();"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-4">
+                                        <label class="form-label">Email address</label>
+                                        <input type="email" class="form-control" id="input_email_name" placeholder="name@example.com">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label">Client Id</label>
+                                        <textarea class="form-control" id="input_client_id" rows="3"></textarea>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label">Client Secret</label>
+                                        <input id="input_client_secret" class="form-control" type="text" placeholder="Client Secret">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-label-secondary waves-effect" data-bs-dismiss="modal" onclick="handleOpenModal();">
+                                        Close
+                                    </button>
+                                    <button type="button" class="btn btn-primary waves-effect waves-light" onclick="handleSaveClick();">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body" id = "mail_list">
+                
+            </div>
+        </div>
+    </div>
+}
+catch (Exception ex)
+{
+    Console.WriteLine("dashbaord" + ex.Message);
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        loadMailList();
+    });
+
+    function loadMailList() {
+        $.post('/setting/GetMailList', {}, function (data) {
+            try {
+                $('#mail_list').html(data);
+            } catch (e) {
+                console.log(e);
+            } finally {
+            }
+        }, 'html');
+    }
+
+    function handleDeleteClick(mailIdx) {
+        $.post('/setting/DeleteMail', { strMailIdx: mailIdx }, function (data) {
+            console.log(data.status);
+            if (data.status == 201) {
+                loadMailList();
+                OnOpenToast("success", data.message);
+            } else {
+                console.log("Delete failed");
+                OnOpenToast("error", data.message);
+            }
+        }, 'json')
+    }
+
+    const handleUpdateClick = (mailIdx) => {
+        $.post('/setting/UpdateMail', { strMailIdx: mailIdx }, function (data) {
+            console.log(data.status);
+            if (data.status == 201) {
+                loadMailList();
+                OnOpenToast("success", data.message);
+            } else {
+                console.log("Delete failed");
+                OnOpenToast("error", data.message);
+            }
+        }, 'json')
+    };
+
+    function handleOpenModal() { 
+        $.post('/setting/RegisterNewMail', {  }, function (data) {
+            if (data.status == 201) {
+                window.location.href = data.authorizationUrl;
+            } else {
+                console.log("Delete failed");
+            }
+        }, 'json')
+
+        /*initModal();
+        $('#modalCenter').toggleClass("show");
+        if ($('#modalCenter').css('display') === 'none') {
+            $('#modalCenter').css('display', 'block');
+        } else {
+            $('#modalCenter').css('display', 'none');
+        }*/
+    }
+
+    function initModal() {
+        $('#input_email_name').val('');
+        $('#input_client_id').val('');
+        $('#input_client_secret').val('');
+    }
+</script>

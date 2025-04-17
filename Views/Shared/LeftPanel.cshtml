@@ -1,0 +1,49 @@
+﻿@using GoogleLogin.Services;
+
+<div class="nk-sidebar">
+    <div class="nk-nav-scroll">
+        <ul class="metismenu" id="menu">
+            <li class="nav-label">@ViewBag.title</li>
+            @*<li class="@(ViewBag.title == "Dashboard" ? "active": "")">
+                <a href="/home/dashboard">
+                    <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
+                </a>                
+            </li>    *@        
+            <li class ="@(ViewBag.title == "Email" || ViewBag.title == "Detail" ? "active" : "")">
+                <a href="/home/messages" >
+                    <i class="icon-envelope menu-icon"></i> <span class="nav-text">Email</span>
+                </a>                
+            </li>
+            <li class="@(ViewBag.title == "sms")">
+                <a href="/sms/index">
+                    <i class="icon-speech menu-icon"></i> <span class="nav-text">SMS</span>
+                </a>
+            </li>
+            <li class ="@(ViewBag.title == "Profile" ? "active" : "")">
+                <a href="/home/profile">
+                    <i class="icon-user menu-icon"></i><span class="nav-text">Profile</span>
+                </a>                
+            </li>
+            <li class="@(ViewBag.title == "Orders" ? "active": "")">
+                <a class="has-arrow" href="javascript:void()" aria-expanded="@(ViewBag.title == "Orders" ? "true": "false")">
+                    <i class="icon-screen-smartphone menu-icon"></i><span class="nav-text">Order</span>
+                </a>
+                <ul aria-expanded="false" class="collapse @(ViewBag.title == "Orders" ? "in": "false") order-menu">
+                    @*@{
+                        foreach(var p in ViewBag.ShopifyTokens)
+                        {
+                            if (p == null) continue;
+                            <li>
+                                <a href="/shopify/orders?store=@p.ShopDomain" style="display: flex; align-items: center;">
+                                    <span class="label label-pill custom-badge">@lstOrders.Where(e => e.store == p.ShopDomain).FirstOrDefault()?.order</span>
+                                    <span class="caption">@p.ShopDomain</span>
+                                </a>
+                            </li>
+                        }
+                    }*@
+                </ul>
+                    
+            </li>
+        </ul>
+    </div>
+</div>

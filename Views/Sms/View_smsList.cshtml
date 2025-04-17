@@ -1,0 +1,29 @@
+﻿@{
+    <ul class="list-unstyled chat-contact-list py-2 mb-0" id="chat-list">
+        <li class="chat-contact-list-item chat-contact-list-item-title mt-0">
+            <h5 class="text-primary mb-0">SMS</h5>
+        </li>
+        
+        @if (ViewBag.smsList.Count != 0)
+	    {
+            @foreach (var item in ViewBag.smsList)
+            {
+                <li class="chat-contact-list-item mb-1" onclick="handleChatList('@item.sm_from')">
+                    <a class="d-flex align-items-center">
+                        <div class="chat-contact-info flex-grow-1">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h6 class="chat-contact-name text-truncate m-0 fw-normal">@item.sm_from</h6>
+                            </div>
+                            <small class="chat-contact-status text-truncate">@item.sm_date</small>
+                        </div>
+                    </a>
+                </li>
+            }
+        } else
+        {
+            <li class="chat-contact-list-item chat-list-item-0">
+                <h6 class="text-muted mb-0">No SMS Found</h6>
+            </li>
+        }
+    </ul>
+}
