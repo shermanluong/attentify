@@ -1010,8 +1010,8 @@ namespace GoogleLogin.Services
 
         public async Task<string> GetAccessToken()
         {
-            string clientId = "554411087297-k1a42bhgrutgbq5inss1qoj79tltd2on.apps.googleusercontent.com";
-            string clientSecret = "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";
+            string clientId = "";
+            string clientSecret = "";
 
             // URL decode the authorization code
             string authorizationCode = HttpUtility.UrlDecode("4/0AanRRrvTpsSh3hl7c-xVu44BgD4Qn4wjnkhhHFGc2iiXb9cxH1Dp0NlNhIcPdgMYGSBzZg");
